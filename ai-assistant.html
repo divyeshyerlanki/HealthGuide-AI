@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Health Assistant | HealthGuide AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="dashboard-page">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <span>
+                HealthGuide <strong>AI</strong>
+            </span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN</p>
+
+            <a href="dashboard.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="medical-history.html" class="nav-item">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span>Medical History</span>
+            </a>
+
+            <a href="medications.html" class="nav-item">
+                <i class="fa-solid fa-pills"></i>
+                <span>Medications</span>
+            </a>
+
+            <a href="allergies.html" class="nav-item">
+                <i class="fa-solid fa-hand-dots"></i>
+                <span>Allergies</span>
+            </a>
+
+            <a href="medical-documents.html" class="nav-item">
+                <i class="fa-solid fa-file-medical"></i>
+                <span>Medical Documents</span>
+            </a>
+
+            <a href="health-timeline.html" class="nav-item">
+                <i class="fa-solid fa-timeline"></i>
+                <span>Health Timeline</span>
+            </a>
+
+
+            <p class="nav-title second-title">
+                HEALTH TOOLS
+            </p>
+
+            <a href="ai-assistant.html" class="nav-item active">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI Health Assistant</span>
+            </a>
+
+            <a href="symptom-checker.html" class="nav-item">
+                <i class="fa-solid fa-stethoscope"></i>
+                <span>Check My Symptoms</span>
+            </a>
+
+            <a href="health-library.html" class="nav-item">
+                <i class="fa-solid fa-book-medical"></i>
+                <span>Health Library</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="profile-settings.html" class="nav-item">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Profile & Settings</span>
+            </a>
+
+            <a href="index.html" class="nav-item logout-item" id="logoutBtn">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="dashboard-main">
+
+
+        <!-- HEADER -->
+
+        <header class="dashboard-header">
+
+            <button class="mobile-menu" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+
+            <div class="header-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text" placeholder="Search your health information...">
+
+            </div>
+
+
+            <div class="header-right">
+
+                <button class="notification-btn">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span></span>
+
+                </button>
+
+
+                <div class="header-profile">
+
+                    <div class="header-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+
+                        <strong id="headerName">
+                            Patient
+                        </strong>
+
+                        <small>
+                            Patient Account
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <main class="dashboard-content">
+
+
+            <!-- PAGE HEADING -->
+
+            <section class="page-heading">
+
+                <div>
+
+                    <p class="welcome-label">
+                        HEALTH TOOLS
+                    </p>
+
+                    <h1>
+                        AI Health Assistant
+                    </h1>
+
+                    <p>
+                        Ask questions and get general health information.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- AI DISCLAIMER -->
+
+            <section class="dashboard-safety">
+
+                <div class="safety-small-icon">
+
+                    <i class="fa-solid fa-shield-heart"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Health information assistant
+                    </strong>
+
+                    <p>
+                        This assistant provides general health information
+                        and is not a replacement for professional medical advice.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= CHAT ================= -->
+
+            <section class="ai-chat-card dashboard-card">
+
+
+                <!-- CHAT HEADER -->
+
+                <div class="ai-chat-header">
+
+                    <div class="ai-profile">
+
+                        <div class="ai-avatar">
+
+                            <i class="fa-solid fa-robot"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+                                HealthGuide AI
+                            </h2>
+
+                            <span>
+                                <i class="fa-solid fa-circle"></i>
+                                Online
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <button class="clear-chat-btn" onclick="clearChat()">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                        Clear Chat
+
+                    </button>
+
+                </div>
+
+
+                <!-- CHAT MESSAGES -->
+
+                <div class="ai-chat-messages" id="chatMessages">
+
+                    <div class="ai-message">
+
+                        <div class="message-avatar">
+
+                            <i class="fa-solid fa-robot"></i>
+
+                        </div>
+
+
+                        <div class="message-content">
+
+                            <p>
+                                Hi! 👋 I'm HealthGuide AI.
+                            </p>
+
+                            <p>
+                                I can help you understand general health
+                                information, medications, symptoms, and
+                                healthy habits.
+                            </p>
+
+                            <p>
+                                What would you like to know?
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK QUESTIONS -->
+
+                <div class="quick-questions">
+
+                    <span>
+                        Quick questions
+                    </span>
+
+
+                    <div class="quick-question-list">
+
+                        <button onclick="askQuickQuestion('What are some healthy daily habits?')">
+                            <i class="fa-solid fa-heart"></i>
+                            Healthy daily habits
+                        </button>
+
+
+                        <button onclick="askQuickQuestion('What should I know about taking medicines safely?')">
+                            <i class="fa-solid fa-pills"></i>
+                            Medicine safety
+                        </button>
+
+
+                        <button onclick="askQuickQuestion('What are common ways to stay hydrated?')">
+                            <i class="fa-solid fa-glass-water"></i>
+                            Staying hydrated
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INPUT -->
+
+                <div class="ai-input-area">
+
+                    <textarea id="userMessage" placeholder="Ask a health question..." rows="1"
+                        onkeydown="handleEnter(event)"></textarea>
+
+
+                    <button class="ai-send-btn" onclick="sendMessage()">
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                    </button>
+
+                </div>
+
+
+                <p class="ai-input-note">
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    For emergencies or serious symptoms, contact a
+                    qualified healthcare professional or emergency service.
+
+                </p>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* =====================================================
+           SEND MESSAGE
+        ===================================================== */
+
+        async function sendMessage() {
+
+            const input =
+                document.getElementById("userMessage");
+
+            const message =
+                input.value.trim();
+
+            if (!message) {
+                return;
+            }
+
+            // Show user's message immediately
+            addUserMessage(message);
+
+            input.value = "";
+
+            // Show temporary AI message
+            addAIMessage("Thinking... 🤔");
+
+            try {
+
+                const healthData = getHealthData();
+
+                const response =
+                    await fetch("http://localhost:3000/api/chat", {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            message: message,
+
+                            healthData: healthData
+
+                        })
+
+                    });
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.error ||
+                        "Unable to get AI response."
+                    );
+
+                }
+
+
+                // Remove "Thinking..."
+                removeThinkingMessage();
+
+
+                // Show real Gemini response
+                addAIMessage(
+                    formatAIResponse(data.reply)
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "AI Assistant Error:",
+                    error
+                );
+
+
+                removeThinkingMessage();
+
+
+                addAIMessage(
+                    "Sorry, I couldn't connect to the AI right now. " +
+                    "Please make sure the HealthGuide AI backend is running."
+                );
+
+            }
+
+        }
+
+        function getHealthData() {
+
+            const conditions =
+                JSON.parse(
+                    localStorage.getItem(
+                        "healthGuideConditions"
+                    )
+                ) || [];
+
+
+            const medications =
+                JSON.parse(
+                    localStorage.getItem(
+                        "healthGuideMedications"
+                    )
+                ) || [];
+
+
+            const allergies =
+                JSON.parse(
+                    localStorage.getItem(
+                        "healthGuideAllergies"
+                    )
+                ) || [];
+
+
+            const documents =
+                JSON.parse(
+                    localStorage.getItem(
+                        "healthGuideDocuments"
+                    )
+                ) || [];
+
+
+            const userName =
+                localStorage.getItem(
+                    "healthGuideUserName"
+                ) || "";
+
+
+            const dob =
+                localStorage.getItem(
+                    "healthGuideUserDOB"
+                ) || "";
+
+
+            const bloodGroup =
+                localStorage.getItem(
+                    "healthGuideUserBloodGroup"
+                ) || "";
+
+
+            return {
+
+                userName: userName,
+
+                dateOfBirth: dob,
+
+                bloodGroup: bloodGroup,
+
+                medicalConditions: conditions,
+
+                medications: medications,
+
+                allergies: allergies,
+
+                medicalDocuments: documents
+
+            };
+
+        }
+
+        function removeThinkingMessage() {
+
+            const container =
+                document.getElementById(
+                    "chatMessages"
+                );
+
+
+            const messages =
+                container.querySelectorAll(
+                    ".ai-message"
+                );
+
+
+            const lastMessage =
+                messages[messages.length - 1];
+
+
+            if (
+                lastMessage &&
+                lastMessage.textContent.includes(
+                    "Thinking..."
+                )
+            ) {
+
+                lastMessage.remove();
+
+            }
+
+        }
+
+        function formatAIResponse(message) {
+
+            if (!message) {
+                return "I couldn't generate a response.";
+            }
+
+
+            return escapeHTML(message)
+                .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+                .replace(/\n\n/g, "<br><br>")
+                .replace(/\n/g, "<br>");
+
+        }
+
+
+        /* =====================================================
+           USER MESSAGE
+        ===================================================== */
+
+        function addUserMessage(message) {
+
+            const container =
+                document.getElementById("chatMessages");
+
+
+            const messageDiv =
+                document.createElement("div");
+
+
+            messageDiv.className =
+                "user-message";
+
+
+            messageDiv.innerHTML = `
+
+                <div class="message-content">
+
+                    <p>
+                        ${escapeHTML(message)}
+                    </p>
+
+                </div>
+
+                <div class="message-avatar user-avatar">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(messageDiv);
+
+
+            scrollChat();
+
+        }
+
+
+        /* =====================================================
+           AI MESSAGE
+        ===================================================== */
+
+        function addAIMessage(message) {
+
+            const container =
+                document.getElementById("chatMessages");
+
+
+            const messageDiv =
+                document.createElement("div");
+
+
+            messageDiv.className =
+                "ai-message";
+
+
+            messageDiv.innerHTML = `
+
+                <div class="message-avatar">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                </div>
+
+
+                <div class="message-content">
+
+                    <p>
+                        ${message}
+                    </p>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(messageDiv);
+
+
+            scrollChat();
+
+        }
+
+
+        /* =====================================================
+           BASIC AI RESPONSES
+        ===================================================== */
+
+        function generateResponse(message) {
+
+            const text = message.toLowerCase();
+
+
+            /* =====================================================
+               READ USER HEALTH DATA
+            ===================================================== */
+
+            const conditions =
+                JSON.parse(
+                    localStorage.getItem("healthGuideConditions")
+                ) || [];
+
+
+            const medications =
+                JSON.parse(
+                    localStorage.getItem("healthGuideMedications")
+                ) || [];
+
+
+            const allergies =
+                JSON.parse(
+                    localStorage.getItem("healthGuideAllergies")
+                ) || [];
+
+
+            const documents =
+                JSON.parse(
+                    localStorage.getItem("healthGuideDocuments")
+                ) || [];
+
+
+            /* =====================================================
+               MEDICATION QUESTIONS
+            ===================================================== */
+
+            if (
+                text.includes("medication") ||
+                text.includes("medicines") ||
+                text.includes("medicine") ||
+                text.includes("tablets") ||
+                text.includes("drugs")
+            ) {
+
+                if (medications.length === 0) {
+
+                    return `
+                You don't have any medications recorded
+                in your HealthGuide records yet.
+                <br><br>
+                You can add them from the
+                <strong>Medications</strong> page.
+            `;
+
+                }
+
+
+                let response = `
+            According to your HealthGuide records,
+            you have <strong>${medications.length}</strong>
+            medication${medications.length > 1 ? "s" : ""}:
+            <br><br>
+        `;
+
+
+                medications.forEach((medication, index) => {
+
+                    response += `
+                <strong>${index + 1}. ${escapeHTML(medication.name)}</strong>
+                <br>
+                ${escapeHTML(medication.dosage)}
+                · ${escapeHTML(medication.frequency)}
+                <br><br>
+            `;
+
+                });
+
+
+                response += `
+            Please follow the instructions provided by
+            your doctor or pharmacist.
+        `;
+
+
+                return response;
+
+            }
+
+
+            /* =====================================================
+               ALLERGY QUESTIONS
+            ===================================================== */
+
+            if (
+                text.includes("allergy") ||
+                text.includes("allergies") ||
+                text.includes("allergic")
+            ) {
+
+                if (allergies.length === 0) {
+
+                    return `
+                You don't have any allergies recorded
+                in your HealthGuide records yet.
+                <br><br>
+                You can add allergies from the
+                <strong>Allergies</strong> page.
+            `;
+
+                }
+
+
+                let response = `
+            According to your HealthGuide records,
+            you have <strong>${allergies.length}</strong>
+            recorded allerg${allergies.length > 1 ? "ies" : "y"}:
+            <br><br>
+        `;
+
+
+                allergies.forEach((allergy, index) => {
+
+                    response += `
+                <strong>${index + 1}. ${escapeHTML(allergy.name)}</strong>
+                <br>
+                Reaction: ${escapeHTML(allergy.reaction)}
+                <br>
+                Severity: ${escapeHTML(allergy.severity)}
+                <br><br>
+            `;
+
+                });
+
+
+                return response;
+
+            }
+
+
+            /* =====================================================
+               MEDICAL CONDITION QUESTIONS
+            ===================================================== */
+
+            if (
+                text.includes("condition") ||
+                text.includes("conditions") ||
+                text.includes("medical history") ||
+                text.includes("health history") ||
+                text.includes("disease")
+            ) {
+
+                if (conditions.length === 0) {
+
+                    return `
+                You don't have any medical conditions
+                recorded in your HealthGuide records yet.
+                <br><br>
+                You can add them from the
+                <strong>Medical History</strong> page.
+            `;
+
+                }
+
+
+                let response = `
+            According to your HealthGuide records,
+            you have <strong>${conditions.length}</strong>
+            recorded medical condition${conditions.length > 1 ? "s" : ""}:
+            <br><br>
+        `;
+
+
+                conditions.forEach((condition, index) => {
+
+                    response += `
+                <strong>${index + 1}. ${escapeHTML(condition.name)}</strong>
+                <br>
+                Status: ${escapeHTML(condition.status)}
+                <br>
+                ${condition.doctor
+                            ? "Doctor: " + escapeHTML(condition.doctor) + "<br>"
+                            : ""
+                        }
+                <br>
+            `;
+
+                });
+
+
+                return response;
+
+            }
+
+
+            /* =====================================================
+               DOCUMENT QUESTIONS
+            ===================================================== */
+
+            if (
+                text.includes("document") ||
+                text.includes("documents") ||
+                text.includes("reports") ||
+                text.includes("files")
+            ) {
+
+                if (documents.length === 0) {
+
+                    return `
+                You don't have any medical documents
+                uploaded to your HealthGuide records yet.
+                <br><br>
+                You can upload documents from the
+                <strong>Medical Documents</strong> page.
+            `;
+
+                }
+
+
+                let response = `
+            You currently have
+            <strong>${documents.length}</strong>
+            medical document${documents.length > 1 ? "s" : ""}
+            in your HealthGuide records:
+            <br><br>
+        `;
+
+
+                documents.forEach((documentData, index) => {
+
+                    response += `
+                <strong>${index + 1}. ${escapeHTML(documentData.name)}</strong>
+                <br>
+            `;
+
+                });
+
+
+                return response;
+
+            }
+
+
+            /* =====================================================
+               SUMMARY / HEALTH RECORD QUESTIONS
+            ===================================================== */
+
+            if (
+                text.includes("my health") ||
+                text.includes("my records") ||
+                text.includes("my record") ||
+                text.includes("health records") ||
+                text.includes("summary")
+            ) {
+
+                return `
+            Here's a summary of your HealthGuide records:
+            <br><br>
+
+            🏥 Medical Conditions:
+            <strong>${conditions.length}</strong>
+            <br>
+
+            💊 Medications:
+            <strong>${medications.length}</strong>
+            <br>
+
+            🩹 Allergies:
+            <strong>${allergies.length}</strong>
+            <br>
+
+            📄 Medical Documents:
+            <strong>${documents.length}</strong>
+
+            <br><br>
+
+            You can manage these records from the
+            corresponding sections in your dashboard.
+        `;
+
+            }
+
+
+            /* =====================================================
+               GENERAL HEALTH QUESTIONS
+            ===================================================== */
+
+            if (
+                text.includes("headache") ||
+                text.includes("head pain")
+            ) {
+
+                return `
+            Headaches can have many causes, including
+            dehydration, lack of sleep, stress, or other
+            conditions.
+            <br><br>
+            Rest, hydration, and a regular sleep schedule
+            may help with mild headaches.
+            <br><br>
+            If a headache is severe, sudden, unusual, or
+            accompanied by concerning symptoms, seek
+            medical attention.
+        `;
+
+            }
+
+
+            if (
+                text.includes("water") ||
+                text.includes("hydration") ||
+                text.includes("drink")
+            ) {
+
+                return `
+            Staying hydrated helps your body maintain
+            normal temperature, circulation, digestion,
+            and other functions.
+            <br><br>
+            Drinking water regularly throughout the day
+            is a simple way to maintain hydration.
+        `;
+
+            }
+
+
+            if (
+                text.includes("exercise") ||
+                text.includes("workout")
+            ) {
+
+                return `
+            Regular physical activity can support overall
+            health.
+            <br><br>
+            A balanced routine can include walking,
+            strength exercises, flexibility activities,
+            and adequate rest.
+        `;
+
+            }
+
+
+            if (
+                text.includes("sleep") ||
+                text.includes("sleeping")
+            ) {
+
+                return `
+            A consistent sleep schedule, a comfortable
+            sleep environment, limiting caffeine late in
+            the day, and reducing screen use before bedtime
+            can support healthy sleep habits.
+        `;
+
+            }
+
+
+            if (
+                text.includes("healthy") ||
+                text.includes("health")
+            ) {
+
+                return `
+            Some general healthy habits include eating a
+            balanced diet, staying physically active,
+            maintaining good sleep habits, staying hydrated,
+            managing stress, and attending appropriate
+            health checkups.
+        `;
+
+            }
+
+
+            /* =====================================================
+               DEFAULT RESPONSE
+            ===================================================== */
+
+            return `
+        I can provide general health information and
+        help you understand the health records you've
+        stored in HealthGuide AI.
+        <br><br>
+
+        Try asking:
+        <br>
+        • What medications do I have?
+        <br>
+        • What allergies do I have?
+        <br>
+        • What medical conditions do I have?
+        <br>
+        • Show me my health summary.
+        <br>
+        • How many medical documents do I have?
+    `;
+
+        }
+
+
+        /* =====================================================
+           QUICK QUESTIONS
+        ===================================================== */
+
+        function askQuickQuestion(question) {
+
+            document
+                .getElementById("userMessage")
+                .value = question;
+
+
+            sendMessage();
+
+        }
+
+
+        /* =====================================================
+           ENTER KEY
+        ===================================================== */
+
+        function handleEnter(event) {
+
+            if (
+                event.key === "Enter" &&
+                !event.shiftKey
+            ) {
+
+                event.preventDefault();
+
+                sendMessage();
+
+            }
+
+        }
+
+
+        /* =====================================================
+           CLEAR CHAT
+        ===================================================== */
+
+        function clearChat() {
+
+            const container =
+                document.getElementById("chatMessages");
+
+
+            container.innerHTML = `
+
+                <div class="ai-message">
+
+                    <div class="message-avatar">
+
+                        <i class="fa-solid fa-robot"></i>
+
+                    </div>
+
+
+                    <div class="message-content">
+
+                        <p>
+                            Chat cleared. 👋
+                        </p>
+
+                        <p>
+                            How can I help you today?
+                        </p>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* =====================================================
+           SCROLL CHAT
+        ===================================================== */
+
+        function scrollChat() {
+
+            const container =
+                document.getElementById("chatMessages");
+
+
+            container.scrollTop =
+                container.scrollHeight;
+
+        }
+
+
+        /* =====================================================
+           ESCAPE HTML
+        ===================================================== */
+
+        function escapeHTML(value) {
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        function toggleSidebar() {
+
+            document
+                .getElementById("sidebar")
+                .classList
+                .toggle("show");
+
+        }
+
+
+        /* =====================================================
+   USER NAME
+===================================================== */
+
+        const savedName =
+            localStorage.getItem("healthGuideUserName");
+
+        const savedUser =
+            localStorage.getItem("healthGuideUser");
+
+        if (savedName) {
+
+            document
+                .getElementById("headerName")
+                .textContent = savedName;
+
+        } else if (savedUser) {
+
+            const username =
+                savedUser.split("@")[0];
+
+            const formattedName =
+                username.charAt(0).toUpperCase() +
+                username.slice(1);
+
+            document
+                .getElementById("headerName")
+                .textContent = formattedName;
+        }
+
+
+        /* =====================================================
+           LOGOUT
+        ===================================================== */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener(
+                "click",
+                function () {
+
+                    localStorage.removeItem(
+                        "healthGuideUser"
+                    );
+
+                }
+            );
+
+        /* =====================================================
+   RECEIVE SYMPTOMS FROM SYMPTOM CHECKER
+===================================================== */
+
+        const savedAIQuestion =
+            localStorage.getItem(
+                "healthGuideAIQuestion"
+            );
+
+
+        if (savedAIQuestion) {
+
+            localStorage.removeItem(
+                "healthGuideAIQuestion"
+            );
+
+
+            // Put the symptom question into the input
+            document
+                .getElementById("userMessage")
+                .value = savedAIQuestion;
+
+
+            // Send it to real Gemini
+            sendMessage();
+
+        }
+
+    </script>
+
+</body>
+
+</html>

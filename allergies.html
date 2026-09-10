@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Allergies | HealthGuide AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="dashboard-page">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <span>
+                HealthGuide <strong>AI</strong>
+            </span>
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN</p>
+
+            <a href="dashboard.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="medical-history.html" class="nav-item">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span>Medical History</span>
+            </a>
+
+            <a href="medications.html" class="nav-item">
+                <i class="fa-solid fa-pills"></i>
+                <span>Medications</span>
+            </a>
+
+            <a href="allergies.html" class="nav-item active">
+                <i class="fa-solid fa-hand-dots"></i>
+                <span>Allergies</span>
+            </a>
+
+            <a href="medical-documents.html" class="nav-item">
+                <i class="fa-solid fa-file-medical"></i>
+                <span>Medical Documents</span>
+            </a>
+
+            <a href="health-timeline.html" class="nav-item">
+                <i class="fa-solid fa-timeline"></i>
+                <span>Health Timeline</span>
+            </a>
+
+
+            <p class="nav-title second-title">HEALTH TOOLS</p>
+
+            <a href="ai-assistant.html" class="nav-item">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI Health Assistant</span>
+            </a>
+
+            <a href="symptom-checker.html" class="nav-item">
+                <i class="fa-solid fa-stethoscope"></i>
+                <span>Check My Symptoms</span>
+            </a>
+
+            <a href="health-library.html" class="nav-item">
+                <i class="fa-solid fa-book-medical"></i>
+                <span>Health Library</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="profile-settings.html" class="nav-item">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Profile & Settings</span>
+            </a>
+
+            <a href="index.html" class="nav-item logout-item" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <div class="dashboard-main">
+
+        <header class="dashboard-header">
+
+            <button class="mobile-menu" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="header-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text" placeholder="Search your health information...">
+
+            </div>
+
+
+            <div class="header-right">
+
+                <button class="notification-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span></span>
+                </button>
+
+                <div class="header-profile">
+
+                    <div class="header-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+                        <strong id="headerName">Patient</strong>
+                        <small>Patient Account</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <main class="dashboard-content">
+
+            <section class="page-heading">
+
+                <div>
+
+                    <p class="welcome-label">
+                        HEALTH RECORDS
+                    </p>
+
+                    <h1>Allergies</h1>
+
+                    <p>
+                        Keep track of known allergies and reactions.
+                    </p>
+
+                </div>
+
+                <button class="quick-action" onclick="openAllergyModal()">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Allergy
+                </button>
+
+            </section>
+
+
+            <!-- WARNING -->
+            <section class="allergy-warning">
+
+                <div class="allergy-warning-icon">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+
+                <div>
+
+                    <strong>Important allergy information</strong>
+
+                    <p>
+                        Keep your allergy records accurate and tell
+                        healthcare professionals about known allergies
+                        before receiving medical care.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- SUMMARY -->
+            <section class="history-summary-grid">
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon orange-bg">
+                        <i class="fa-solid fa-hand-dots"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Allergies</span>
+                        <strong id="allergyCount">00</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon red-bg">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+
+                    <div>
+                        <span>Severe</span>
+                        <strong id="severeCount">00</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon orange-bg">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+
+                    <div>
+                        <span>Moderate</span>
+                        <strong id="moderateCount">00</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon green-bg">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Mild</span>
+                        <strong id="mildCount">00</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ALLERGY LIST -->
+            <section class="dashboard-card history-section">
+
+                <div class="section-card-header">
+
+                    <div>
+
+                        <h2>Known Allergies</h2>
+
+                        <p>
+                            Allergies and reactions recorded in your
+                            health history.
+                        </p>
+
+                    </div>
+
+                    <button class="small-add-btn" onclick="openAllergyModal()">
+                        <i class="fa-solid fa-plus"></i>
+                        Add
+                    </button>
+
+                </div>
+
+
+                <div id="allergiesList" class="allergies-list">
+
+                    <!-- JS inserts allergies -->
+
+                </div>
+
+            </section>
+
+
+            <!-- INFORMATION CARD -->
+            <section class="dashboard-card allergy-info-card">
+
+                <div class="allergy-info-icon">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+
+                <div>
+
+                    <h3>Why keep allergy information updated?</h3>
+
+                    <p>
+                        Accurate allergy information can help healthcare
+                        professionals make safer decisions about medicines,
+                        procedures and treatments.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= MODAL ================= -->
+
+    <div class="modal-overlay" id="allergyModal">
+
+        <div class="condition-modal">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <div class="modal-icon allergy-modal-icon">
+                        <i class="fa-solid fa-hand-dots"></i>
+                    </div>
+
+                    <div>
+
+                        <h2 id="allergyModalTitle">
+                            Add Allergy
+                        </h2>
+
+                        <p>
+                            Add information about a known allergy.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <button onclick="closeAllergyModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <form id="allergyForm">
+
+                <input type="hidden" id="allergyEditIndex">
+
+
+                <div class="form-group">
+
+                    <label for="allergyName">
+                        Allergy
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-hand-dots"></i>
+
+                        <input type="text" id="allergyName" placeholder="e.g. Penicillin" required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="allergyReaction">
+                        Reaction
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-notes-medical"></i>
+
+                        <input type="text" id="allergyReaction" placeholder="e.g. Skin rash" required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="allergySeverity">
+                        Severity
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+
+                        <select id="allergySeverity">
+
+                            <option value="Mild">
+                                Mild
+                            </option>
+
+                            <option value="Moderate">
+                                Moderate
+                            </option>
+
+                            <option value="Severe">
+                                Severe
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="allergyNotes">
+                        Notes
+                    </label>
+
+                    <textarea id="allergyNotes" placeholder="Add any additional information..."></textarea>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button type="button" class="cancel-btn" onclick="closeAllergyModal()">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="save-btn">
+                        <i class="fa-solid fa-check"></i>
+                        Save Allergy
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* ================= DATA ================= */
+
+        let allergies =
+            JSON.parse(
+                localStorage.getItem("healthGuideAllergies")
+            ) || [];
+
+
+        /* ================= ELEMENTS ================= */
+
+        const allergiesList =
+            document.getElementById("allergiesList");
+
+        const allergyCount =
+            document.getElementById("allergyCount");
+
+        const severeCount =
+            document.getElementById("severeCount");
+
+        const moderateCount =
+            document.getElementById("moderateCount");
+
+        const mildCount =
+            document.getElementById("mildCount");
+
+
+        /* ================= DISPLAY ================= */
+
+        function displayAllergies() {
+
+            allergiesList.innerHTML = "";
+
+            allergyCount.textContent =
+                String(allergies.length).padStart(2, "0");
+
+
+            const severe =
+                allergies.filter(
+                    item => item.severity === "Severe"
+                ).length;
+
+            const moderate =
+                allergies.filter(
+                    item => item.severity === "Moderate"
+                ).length;
+
+            const mild =
+                allergies.filter(
+                    item => item.severity === "Mild"
+                ).length;
+
+
+            severeCount.textContent =
+                String(severe).padStart(2, "0");
+
+            moderateCount.textContent =
+                String(moderate).padStart(2, "0");
+
+            mildCount.textContent =
+                String(mild).padStart(2, "0");
+
+
+            if (allergies.length === 0) {
+
+                allergiesList.innerHTML = `
+
+                    <div class="empty-history">
+
+                        <div class="empty-history-icon allergy-empty-icon">
+                            <i class="fa-solid fa-hand-dots"></i>
+                        </div>
+
+                        <h3>No allergies added yet</h3>
+
+                        <p>
+                            Add known allergies and reactions
+                            to keep your health information updated.
+                        </p>
+
+                        <button onclick="openAllergyModal()">
+                            <i class="fa-solid fa-plus"></i>
+                            Add Your First Allergy
+                        </button>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            allergies.forEach((allergy, index) => {
+
+                const item =
+                    document.createElement("div");
+
+                item.className = "allergy-item";
+
+
+                item.innerHTML = `
+
+                    <div class="allergy-icon">
+                        <i class="fa-solid fa-hand-dots"></i>
+                    </div>
+
+
+                    <div class="allergy-info">
+
+                        <div class="allergy-title">
+
+                            <strong>
+                                ${escapeHTML(allergy.name)}
+                            </strong>
+
+                            <span class="
+                                allergy-severity
+                                ${getSeverityClass(allergy.severity)}
+                            ">
+                                ${escapeHTML(allergy.severity)}
+                            </span>
+
+                        </div>
+
+
+                        <div class="allergy-reaction">
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                            Reaction:
+                            ${escapeHTML(allergy.reaction)}
+
+                        </div>
+
+
+                        ${allergy.notes
+                        ?
+                        `
+                            <p class="allergy-notes">
+                                ${escapeHTML(allergy.notes)}
+                            </p>
+                            `
+                        :
+                        ""
+                    }
+
+                    </div>
+
+
+                    <div class="condition-actions">
+
+                        <button
+                            onclick="editAllergy(${index})"
+                            title="Edit"
+                        >
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                        <button
+                            onclick="deleteAllergy(${index})"
+                            title="Delete"
+                        >
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                allergiesList.appendChild(item);
+
+            });
+
+        }
+
+
+        /* ================= SEVERITY ================= */
+
+        function getSeverityClass(severity) {
+
+            if (severity === "Severe") {
+                return "severity-severe";
+            }
+
+            if (severity === "Moderate") {
+                return "severity-moderate";
+            }
+
+            return "severity-mild";
+
+        }
+
+
+        /* ================= MODAL ================= */
+
+        function openAllergyModal() {
+
+            document
+                .getElementById("allergyModal")
+                .classList.add("show");
+
+            document
+                .getElementById("allergyForm")
+                .reset();
+
+            document
+                .getElementById("allergyEditIndex")
+                .value = "";
+
+            document
+                .getElementById("allergyModalTitle")
+                .textContent =
+                "Add Allergy";
+
+        }
+
+
+        function closeAllergyModal() {
+
+            document
+                .getElementById("allergyModal")
+                .classList.remove("show");
+
+        }
+
+
+        /* ================= SAVE ================= */
+
+        document
+            .getElementById("allergyForm")
+            .addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const allergy = {
+
+                        name:
+                            document
+                                .getElementById("allergyName")
+                                .value
+                                .trim(),
+
+                        reaction:
+                            document
+                                .getElementById("allergyReaction")
+                                .value
+                                .trim(),
+
+                        severity:
+                            document
+                                .getElementById("allergySeverity")
+                                .value,
+
+                        notes:
+                            document
+                                .getElementById("allergyNotes")
+                                .value
+                                .trim()
+
+                    };
+
+
+                    const editIndex =
+                        document
+                            .getElementById("allergyEditIndex")
+                            .value;
+
+
+                    if (editIndex === "") {
+
+                        allergies.push(allergy);
+
+                    } else {
+
+                        allergies[
+                            Number(editIndex)
+                        ] = allergy;
+
+                    }
+
+
+                    localStorage.setItem(
+                        "healthGuideAllergies",
+                        JSON.stringify(allergies)
+                    );
+
+
+                    displayAllergies();
+
+                    closeAllergyModal();
+
+                }
+            );
+
+
+        /* ================= EDIT ================= */
+
+        function editAllergy(index) {
+
+            const allergy =
+                allergies[index];
+
+
+            document
+                .getElementById("allergyModal")
+                .classList.add("show");
+
+
+            document
+                .getElementById("allergyModalTitle")
+                .textContent =
+                "Edit Allergy";
+
+
+            document
+                .getElementById("allergyEditIndex")
+                .value = index;
+
+
+            document
+                .getElementById("allergyName")
+                .value =
+                allergy.name;
+
+
+            document
+                .getElementById("allergyReaction")
+                .value =
+                allergy.reaction;
+
+
+            document
+                .getElementById("allergySeverity")
+                .value =
+                allergy.severity;
+
+
+            document
+                .getElementById("allergyNotes")
+                .value =
+                allergy.notes;
+
+        }
+
+
+        /* ================= DELETE ================= */
+
+        function deleteAllergy(index) {
+
+            if (
+                !confirm(
+                    "Are you sure you want to delete this allergy?"
+                )
+            ) {
+                return;
+            }
+
+
+            allergies.splice(index, 1);
+
+
+            localStorage.setItem(
+                "healthGuideAllergies",
+                JSON.stringify(allergies)
+            );
+
+
+            displayAllergies();
+
+        }
+
+
+        /* ================= HELPERS ================= */
+
+        function escapeHTML(value) {
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        /* ================= SIDEBAR ================= */
+
+        function toggleSidebar() {
+
+            document
+                .getElementById("sidebar")
+                .classList.toggle("show");
+
+        }
+
+
+        /* ================= USER ================= */
+
+        const savedName =
+            localStorage.getItem("healthGuideUserName");
+
+        const savedUser =
+            localStorage.getItem("healthGuideUser");
+
+        if (savedName) {
+
+            document
+                .getElementById("headerName")
+                .textContent = savedName;
+
+        } else if (savedUser) {
+
+            const username =
+                savedUser.split("@")[0];
+
+            const formattedName =
+                username.charAt(0).toUpperCase() +
+                username.slice(1);
+
+            document
+                .getElementById("headerName")
+                .textContent =
+                formattedName;
+        }
+
+
+        /* ================= LOGOUT ================= */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener(
+                "click",
+                function () {
+
+                    localStorage.removeItem(
+                        "healthGuideUser"
+                    );
+
+                }
+            );
+
+
+        /* ================= INITIAL LOAD ================= */
+
+        displayAllergies();
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Health Library | HealthGuide AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+
+<body class="dashboard-page">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <span>
+                HealthGuide <strong>AI</strong>
+            </span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN</p>
+
+            <a href="dashboard.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="medical-history.html" class="nav-item">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span>Medical History</span>
+            </a>
+
+            <a href="medications.html" class="nav-item">
+                <i class="fa-solid fa-pills"></i>
+                <span>Medications</span>
+            </a>
+
+            <a href="allergies.html" class="nav-item">
+                <i class="fa-solid fa-hand-dots"></i>
+                <span>Allergies</span>
+            </a>
+
+            <a href="medical-documents.html" class="nav-item">
+                <i class="fa-solid fa-file-medical"></i>
+                <span>Medical Documents</span>
+            </a>
+
+            <a href="health-timeline.html" class="nav-item">
+                <i class="fa-solid fa-timeline"></i>
+                <span>Health Timeline</span>
+            </a>
+
+
+            <p class="nav-title second-title">
+                HEALTH TOOLS
+            </p>
+
+            <a href="ai-assistant.html" class="nav-item">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI Health Assistant</span>
+            </a>
+
+            <a href="symptom-checker.html" class="nav-item">
+                <i class="fa-solid fa-stethoscope"></i>
+                <span>Check My Symptoms</span>
+            </a>
+
+            <a href="health-library.html" class="nav-item active">
+                <i class="fa-solid fa-book-medical"></i>
+                <span>Health Library</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="profile-settings.html" class="nav-item">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Profile & Settings</span>
+            </a>
+
+            <a href="index.html" class="nav-item logout-item" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="dashboard-main">
+
+
+        <!-- HEADER -->
+
+        <header class="dashboard-header">
+
+            <button class="mobile-menu" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+
+            <div class="header-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text" id="librarySearch" placeholder="Search health topics...">
+
+            </div>
+
+
+            <div class="header-right">
+
+                <button class="notification-btn">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span></span>
+
+                </button>
+
+
+                <div class="header-profile">
+
+                    <div class="header-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+
+                        <strong id="headerName">
+                            Patient
+                        </strong>
+
+                        <small>
+                            Patient Account
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <main class="dashboard-content">
+
+
+            <!-- HEADING -->
+
+            <section class="page-heading">
+
+                <div>
+
+                    <p class="welcome-label">
+                        HEALTH RESOURCES
+                    </p>
+
+                    <h1>
+                        Health Library
+                    </h1>
+
+                    <p>
+                        Explore general health information and wellness topics.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- SAFETY -->
+
+            <section class="dashboard-safety">
+
+                <div class="safety-small-icon">
+
+                    <i class="fa-solid fa-book-medical"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Learn about your health
+                    </strong>
+
+                    <p>
+                        These resources provide general educational
+                        information and are not a substitute for
+                        professional medical advice.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- SEARCH -->
+
+            <section class="library-search-card dashboard-card">
+
+                <div class="library-search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input type="text" id="topicSearch" placeholder="Search topics like sleep, nutrition, exercise...">
+
+                </div>
+
+            </section>
+
+
+            <!-- TOPICS -->
+
+            <section>
+
+                <div class="library-section-heading">
+
+                    <div>
+
+                        <h2>
+                            Explore Topics
+                        </h2>
+
+                        <p>
+                            Choose a topic to learn more.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="library-grid" id="libraryGrid">
+
+
+                    <!-- NUTRITION -->
+
+                    <article class="library-topic-card" data-topic="nutrition healthy food diet eating">
+
+                        <div class="library-topic-icon nutrition-icon">
+
+                            <i class="fa-solid fa-apple-whole"></i>
+
+                        </div>
+
+
+                        <div class="library-topic-content">
+
+                            <span class="library-category">
+                                WELLNESS
+                            </span>
+
+                            <h3>
+                                Nutrition
+                            </h3>
+
+                            <p>
+                                Learn about balanced eating,
+                                healthy food choices, and nutrition basics.
+                            </p>
+
+
+                            <button onclick="askAI('Tell me about healthy nutrition and balanced eating.')"
+                                class="library-ai-btn">
+
+                                <i class="fa-solid fa-robot"></i>
+
+                                Ask AI
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- EXERCISE -->
+
+                    <article class="library-topic-card" data-topic="exercise fitness workout physical activity">
+
+                        <div class="library-topic-icon exercise-icon">
+
+                            <i class="fa-solid fa-person-running"></i>
+
+                        </div>
+
+
+                        <div class="library-topic-content">
+
+                            <span class="library-category">
+                                FITNESS
+                            </span>
+
+                            <h3>
+                                Exercise & Fitness
+                            </h3>
+
+                            <p>
+                                Explore physical activity,
+                                movement, fitness, and healthy routines.
+                            </p>
+
+
+                            <button onclick="askAI('What are some general healthy exercise and fitness habits?')"
+                                class="library-ai-btn">
+
+                                <i class="fa-solid fa-robot"></i>
+
+                                Ask AI
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- SLEEP -->
+
+                    <article class="library-topic-card" data-topic="sleep sleeping rest insomnia bedtime">
+
+                        <div class="library-topic-icon sleep-icon">
+
+                            <i class="fa-solid fa-moon"></i>
+
+                        </div>
+
+
+                        <div class="library-topic-content">
+
+                            <span class="library-category">
+                                WELLNESS
+                            </span>
+
+                            <h3>
+                                Sleep
+                            </h3>
+
+                            <p>
+                                Learn about healthy sleep habits,
+                                routines, and rest.
+                            </p>
+
+
+                            <button onclick="askAI('What are some healthy sleep habits?')" class="library-ai-btn">
+
+                                <i class="fa-solid fa-robot"></i>
+
+                                Ask AI
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- HYDRATION -->
+
+                    <article class="library-topic-card" data-topic="water hydration fluids drinking">
+
+                        <div class="library-topic-icon hydration-icon">
+
+                            <i class="fa-solid fa-glass-water"></i>
+
+                        </div>
+
+
+                        <div class="library-topic-content">
+
+                            <span class="library-category">
+                                WELLNESS
+                            </span>
+
+                            <h3>
+                                Hydration
+                            </h3>
+
+                            <p>
+                                Understand the importance of fluids
+                                and maintaining healthy hydration habits.
+                            </p>
+
+
+                            <button
+                                onclick="askAI('Why is hydration important and what are some healthy hydration habits?')"
+                                class="library-ai-btn">
+
+                                <i class="fa-solid fa-robot"></i>
+
+                                Ask AI
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MEDICATION SAFETY -->
+
+                    <article class="library-topic-card"
+                        data-topic="medicine medication tablets prescription safety drugs">
+
+                        <div class="library-topic-icon medication-icon">
+
+                            <i class="fa-solid fa-pills"></i>
+
+                        </div>
+
+
+                        <div class="library-topic-content">
+
+                            <span class="library-category">
+                                MEDICATION
+                            </span>
+
+                            <h3>
+                                Medication Safety
+                            </h3>
+
+                            <p>
+                                Learn general principles for using
+                                medicines safely and responsibly.
+                            </p>
+
+
+                            <button onclick="askAI('What are some general medication safety practices?')"
+                                class="library-ai-btn">
+
+                                <i class="fa-solid fa-robot"></i>
+
+                                Ask AI
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- HEART -->
+
+                    <article class="library-topic-card" data-topic="heart cardiac cardiovascular blood pressure">
+
+                        <div class="library-topic-icon heart-icon">
+
+                            <i class="fa-solid fa-heart"></i>
+
+                        </div>
+
+
+                        <div class="library-topic-content">
+
+                            <span class="library-category">
+                                HEART HEALTH
+                            </span>
+
+                            <h3>
+                                Heart Health
+                            </h3>
+
+                            <p>
+                                Learn about general habits that can
+                                support cardiovascular health.
+                            </p>
+
+
+                            <button onclick="askAI('What are some general habits that support heart health?')"
+                                class="library-ai-btn">
+
+                                <i class="fa-solid fa-robot"></i>
+
+                                Ask AI
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MENTAL WELLBEING -->
+
+                    <article class="library-topic-card" data-topic="mental wellbeing stress relaxation mindfulness">
+
+                        <div class="library-topic-icon mental-icon">
+
+                            <i class="fa-solid fa-brain"></i>
+
+                        </div>
+
+
+                        <div class="library-topic-content">
+
+                            <span class="library-category">
+                                WELLBEING
+                            </span>
+
+                            <h3>
+                                Mental Wellbeing
+                            </h3>
+
+                            <p>
+                                Explore general information about
+                                stress management and wellbeing.
+                            </p>
+
+
+                            <button
+                                onclick="askAI('What are some general ways to support mental wellbeing and manage stress?')"
+                                class="library-ai-btn">
+
+                                <i class="fa-solid fa-robot"></i>
+
+                                Ask AI
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PREVENTIVE CARE -->
+
+                    <article class="library-topic-card"
+                        data-topic="preventive care checkup screening prevention doctor">
+
+                        <div class="library-topic-icon preventive-icon">
+
+                            <i class="fa-solid fa-user-doctor"></i>
+
+                        </div>
+
+
+                        <div class="library-topic-content">
+
+                            <span class="library-category">
+                                PREVENTION
+                            </span>
+
+                            <h3>
+                                Preventive Care
+                            </h3>
+
+                            <p>
+                                Learn about general health checkups,
+                                prevention, and healthy routines.
+                            </p>
+
+
+                            <button
+                                onclick="askAI('What is preventive healthcare and why are regular checkups useful?')"
+                                class="library-ai-btn">
+
+                                <i class="fa-solid fa-robot"></i>
+
+                                Ask AI
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+                <!-- NO RESULTS -->
+
+                <div id="noTopics" class="library-no-results" style="display: none;">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <h3>
+                        No topics found
+                    </h3>
+
+                    <p>
+                        Try searching for another health topic.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        const searchInput =
+            document.getElementById("topicSearch");
+
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                const search =
+                    this.value
+                        .toLowerCase()
+                        .trim();
+
+
+                const cards =
+                    document.querySelectorAll(
+                        ".library-topic-card"
+                    );
+
+
+                let visibleCards = 0;
+
+
+                cards.forEach(card => {
+
+                    const topic =
+                        card
+                            .dataset
+                            .topic
+                            .toLowerCase();
+
+
+                    const title =
+                        card
+                            .querySelector("h3")
+                            .textContent
+                            .toLowerCase();
+
+
+                    const description =
+                        card
+                            .querySelector("p")
+                            .textContent
+                            .toLowerCase();
+
+
+                    const matches =
+                        topic.includes(search) ||
+                        title.includes(search) ||
+                        description.includes(search);
+
+
+                    if (matches) {
+
+                        card.style.display = "flex";
+
+                        visibleCards++;
+
+                    } else {
+
+                        card.style.display = "none";
+
+                    }
+
+                });
+
+
+                document
+                    .getElementById("noTopics")
+                    .style.display =
+                    visibleCards === 0
+                        ? "block"
+                        : "none";
+
+            }
+        );
+
+
+        /* =====================================================
+           ASK AI
+        ===================================================== */
+
+        function askAI(question) {
+
+            localStorage.setItem(
+                "healthGuideAIQuestion",
+                question
+            );
+
+
+            window.location.href =
+                "ai-assistant.html";
+
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        function toggleSidebar() {
+
+            document
+                .getElementById("sidebar")
+                .classList
+                .toggle("show");
+
+        }
+
+
+        /* =====================================================
+   USER NAME
+===================================================== */
+
+        const savedName =
+            localStorage.getItem("healthGuideUserName");
+
+        const savedUser =
+            localStorage.getItem("healthGuideUser");
+
+        if (savedName) {
+
+            document
+                .getElementById("headerName")
+                .textContent = savedName;
+
+        } else if (savedUser) {
+
+            const username =
+                savedUser.split("@")[0];
+
+            const formattedName =
+                username.charAt(0).toUpperCase() +
+                username.slice(1);
+
+            document
+                .getElementById("headerName")
+                .textContent =
+                formattedName;
+        }
+
+
+        /* =====================================================
+           LOGOUT
+        ===================================================== */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener(
+                "click",
+                function () {
+
+                    localStorage.removeItem(
+                        "healthGuideUser"
+                    );
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>

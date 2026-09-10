@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | HealthGuide AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="dashboard-page">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <span>
+                HealthGuide <strong>AI</strong>
+            </span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN</p>
+
+            <a href="dashboard.html" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="medical-history.html" class="nav-item">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span>Medical History</span>
+            </a>
+
+            <a href="medications.html" class="nav-item">
+                <i class="fa-solid fa-pills"></i>
+                <span>Medications</span>
+            </a>
+
+            <a href="allergies.html" class="nav-item">
+                <i class="fa-solid fa-hand-dots"></i>
+                <span>Allergies</span>
+            </a>
+
+            <a href="medical-documents.html" class="nav-item">
+                <i class="fa-solid fa-file-medical"></i>
+                <span>Medical Documents</span>
+            </a>
+
+            <a href="health-timeline.html" class="nav-item">
+                <i class="fa-solid fa-timeline"></i>
+                <span>Health Timeline</span>
+            </a>
+
+
+            <p class="nav-title second-title">HEALTH TOOLS</p>
+
+            <a href="ai-assistant.html" class="nav-item">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI Health Assistant</span>
+            </a>
+
+            <a href="symptom-checker.html" class="nav-item">
+                <i class="fa-solid fa-stethoscope"></i>
+                <span>Check My Symptoms</span>
+            </a>
+
+            <a href="health-library.html" class="nav-item">
+                <i class="fa-solid fa-book-medical"></i>
+                <span>Health Library</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="profile-settings.html" class="nav-item">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Profile & Settings</span>
+            </a>
+
+            <a href="index.html" class="nav-item logout-item" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN AREA ================= -->
+
+    <div class="dashboard-main">
+
+
+        <!-- Top Header -->
+
+        <header class="dashboard-header">
+
+            <button class="mobile-menu" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+
+            <div class="header-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text" placeholder="Search your health information...">
+
+            </div>
+
+
+            <div class="header-right">
+
+                <button class="notification-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span></span>
+                </button>
+
+                <div class="header-profile">
+
+                    <div class="header-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+                        <strong id="headerName">Patient</strong>
+                        <small>Patient Account</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <main class="dashboard-content">
+
+
+            <!-- Welcome -->
+
+            <section class="welcome-section">
+
+                <div>
+
+                    <p class="welcome-label">
+                        PATIENT DASHBOARD
+                    </p>
+
+                    <h1>
+                        Good evening,
+                        <span id="patientName">there</span> 👋
+                    </h1>
+
+                    <p>
+                        Here's an overview of your health information.
+                    </p>
+
+                </div>
+
+                <a href="medical-history.html" class="quick-action">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Health Record
+                </a>
+
+            </section>
+
+
+            <!-- Safety Banner -->
+
+            <section class="dashboard-safety">
+
+                <div class="safety-small-icon">
+                    <i class="fa-solid fa-shield-heart"></i>
+                </div>
+
+                <div>
+
+                    <strong>Your health information matters</strong>
+
+                    <p>
+                        Keep your medical information up to date and
+                        consult a qualified healthcare professional
+                        when needed.
+                    </p>
+
+                </div>
+
+                <button>
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </section>
+
+
+            <!-- ================= STAT CARDS ================= -->
+
+            <section class="dashboard-grid">
+
+
+                <div class="dashboard-card stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon blue-bg">
+                            <i class="fa-solid fa-notes-medical"></i>
+                        </div>
+
+                        <span class="stat-label">
+                            Medical History
+                        </span>
+
+                    </div>
+
+                    <strong class="stat-number">06</strong>
+
+                    <p>
+                        Conditions & records
+                    </p>
+
+                    <a href="medical-history.html">
+                        View history
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <div class="dashboard-card stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon teal-bg">
+                            <i class="fa-solid fa-pills"></i>
+                        </div>
+
+                        <span class="stat-label">
+                            Medications
+                        </span>
+
+                    </div>
+
+                    <strong class="stat-number">03</strong>
+
+                    <p>
+                        Current medications
+                    </p>
+
+                    <a href="medications.html">
+                        View medications
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <div class="dashboard-card stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon orange-bg">
+                            <i class="fa-solid fa-hand-dots"></i>
+                        </div>
+
+                        <span class="stat-label">
+                            Allergies
+                        </span>
+
+                    </div>
+
+                    <strong class="stat-number">02</strong>
+
+                    <p>
+                        Recorded allergies
+                    </p>
+
+                    <a href="allergies.html">
+                        View allergies
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <div class="dashboard-card stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon purple-bg">
+                            <i class="fa-solid fa-file-medical"></i>
+                        </div>
+
+                        <span class="stat-label">
+                            Reports
+                        </span>
+
+                    </div>
+
+                    <strong class="stat-number">08</strong>
+
+                    <p>
+                        Medical documents
+                    </p>
+
+                    <a href="medical-documents.html">
+                        View documents
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= LOWER GRID ================= -->
+
+            <section class="dashboard-lower-grid">
+
+
+                <!-- AI Assistant -->
+
+                <div class="dashboard-card ai-card">
+
+                    <div class="card-heading">
+
+                        <div>
+
+                            <div class="heading-icon ai-icon">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+
+                            <div>
+                                <h2>AI Health Assistant</h2>
+                                <p>
+                                    Get general health information and guidance.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <span class="online-status">
+                            <span></span>
+                            Available
+                        </span>
+
+                    </div>
+
+
+                    <div class="ai-message">
+
+                        <div class="ai-avatar">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                How can I help you today?
+                            </strong>
+
+                            <p>
+                                You can describe symptoms, ask health
+                                questions, or learn more about a condition.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ai-input">
+
+                        <input type="text" placeholder="Ask a health question...">
+
+                        <button>
+                            <i class="fa-solid fa-arrow-up"></i>
+                        </button>
+
+                    </div>
+
+                    <small class="ai-disclaimer">
+                        AI provides general information and does not provide
+                        a confirmed diagnosis.
+                    </small>
+
+                </div>
+
+
+                <!-- Urgency -->
+
+                <div class="dashboard-card symptom-card">
+
+                    <div class="card-heading">
+
+                        <div>
+
+                            <div class="heading-icon green-icon">
+                                <i class="fa-solid fa-stethoscope"></i>
+                            </div>
+
+                            <div>
+                                <h2>Check Your Symptoms</h2>
+                                <p>
+                                    Get a general urgency assessment.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="urgency-preview">
+
+                        <div class="urgency-circle">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+
+                        <div>
+
+                            <span>Assessment</span>
+
+                            <strong>
+                                Understand your next step
+                            </strong>
+
+                            <p>
+                                Tell us about your symptoms and we'll
+                                help you understand the appropriate
+                                level of care.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="symptom-checker.html" class="check-btn">
+                        Check My Symptoms
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= TIMELINE ================= -->
+
+            <section class="dashboard-card recent-section">
+
+                <div class="section-card-header">
+
+                    <div>
+
+                        <h2>Recent Health Activity</h2>
+
+                        <p>
+                            Your latest health records and updates.
+                        </p>
+
+                    </div>
+
+                    <a href="health-timeline.html">
+                        View Timeline
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <div class="activity-list">
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon report-icon">
+                            <i class="fa-solid fa-file-medical"></i>
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>
+                                Blood Test Report
+                            </strong>
+
+                            <span>
+                                Medical document added
+                            </span>
+
+                        </div>
+
+                        <time>
+                            Today
+                        </time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon medication-icon">
+                            <i class="fa-solid fa-pills"></i>
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>
+                                Medication Updated
+                            </strong>
+
+                            <span>
+                                Medication information changed
+                            </span>
+
+                        </div>
+
+                        <time>
+                            2 days ago
+                        </time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon history-icon">
+                            <i class="fa-solid fa-notes-medical"></i>
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>
+                                Medical History Updated
+                            </strong>
+
+                            <span>
+                                Health record information updated
+                            </span>
+
+                        </div>
+
+                        <time>
+                            5 days ago
+                        </time>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= EMERGENCY ================= -->
+
+            <section class="emergency-card">
+
+                <div class="emergency-icon">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+
+                <div>
+
+                    <strong>
+                        Experiencing a medical emergency?
+                    </strong>
+
+                    <p>
+                        Do not rely on this application for emergency care.
+                        Contact your local emergency service or go to the
+                        nearest emergency department.
+                    </p>
+
+                </div>
+
+                <a href="#">
+                    Emergency Information
+                </a>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script>
+
+        /* ================= USER NAME ================= */
+
+        const savedName =
+            localStorage.getItem("healthGuideUserName");
+
+        const savedUser =
+            localStorage.getItem("healthGuideUser");
+
+        if (savedName) {
+
+            document.getElementById("patientName")
+                .textContent = savedName;
+
+            document.getElementById("headerName")
+                .textContent = savedName;
+
+        } else if (savedUser) {
+
+            const username =
+                savedUser.split("@")[0];
+
+            const formattedName =
+                username.charAt(0).toUpperCase() +
+                username.slice(1);
+
+            document.getElementById("patientName")
+                .textContent = formattedName;
+
+            document.getElementById("headerName")
+                .textContent = formattedName;
+        }
+
+
+        /* ================= SIDEBAR ================= */
+
+        function toggleSidebar() {
+
+            const sidebar =
+                document.getElementById("sidebar");
+
+            sidebar.classList.toggle("show");
+
+        }
+
+
+        /* ================= LOGOUT ================= */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener("click", function () {
+
+                localStorage.removeItem("healthGuideUser");
+
+            });
+
+    </script>
+
+</body>
+
+</html>

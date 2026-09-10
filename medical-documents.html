@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Medical Documents | HealthGuide AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+
+<body class="dashboard-page">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <span>
+                HealthGuide <strong>AI</strong>
+            </span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN</p>
+
+            <a href="dashboard.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="medical-history.html" class="nav-item">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span>Medical History</span>
+            </a>
+
+            <a href="medications.html" class="nav-item">
+                <i class="fa-solid fa-pills"></i>
+                <span>Medications</span>
+            </a>
+
+            <a href="allergies.html" class="nav-item">
+                <i class="fa-solid fa-hand-dots"></i>
+                <span>Allergies</span>
+            </a>
+
+            <a href="medical-documents.html" class="nav-item active">
+                <i class="fa-solid fa-file-medical"></i>
+                <span>Medical Documents</span>
+            </a>
+
+            <a href="health-timeline.html" class="nav-item">
+                <i class="fa-solid fa-timeline"></i>
+                <span>Health Timeline</span>
+            </a>
+
+
+            <p class="nav-title second-title">HEALTH TOOLS</p>
+
+            <a href="ai-assistant.html" class="nav-item">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI Health Assistant</span>
+            </a>
+
+            <a href="symptom-checker.html" class="nav-item">
+                <i class="fa-solid fa-stethoscope"></i>
+                <span>Check My Symptoms</span>
+            </a>
+
+            <a href="health-library.html" class="nav-item">
+                <i class="fa-solid fa-book-medical"></i>
+                <span>Health Library</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="profile-settings.html" class="nav-item">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Profile & Settings</span>
+            </a>
+
+            <a href="index.html" class="nav-item logout-item" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="dashboard-main">
+
+
+        <!-- HEADER -->
+
+        <header class="dashboard-header">
+
+            <button class="mobile-menu" onclick="toggleSidebar()">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <div class="header-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text" placeholder="Search your health information...">
+
+            </div>
+
+
+            <div class="header-right">
+
+                <button class="notification-btn">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span></span>
+
+                </button>
+
+
+                <div class="header-profile">
+
+                    <div class="header-avatar">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong id="headerName">
+                            Patient
+                        </strong>
+
+                        <small>
+                            Patient Account
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <main class="dashboard-content">
+
+
+            <!-- PAGE HEADING -->
+
+            <section class="page-heading">
+
+                <div>
+
+                    <p class="welcome-label">
+                        HEALTH RECORDS
+                    </p>
+
+                    <h1>
+                        Medical Documents
+                    </h1>
+
+                    <p>
+                        Upload and organize your important medical reports
+                        and documents.
+                    </p>
+
+                </div>
+
+
+                <button class="quick-action" onclick="openFilePicker()">
+
+                    <i class="fa-solid fa-upload"></i>
+
+                    Upload Document
+
+                </button>
+
+            </section>
+
+
+            <!-- INFORMATION -->
+
+            <section class="dashboard-safety">
+
+                <div class="safety-small-icon">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Keep your documents secure
+                    </strong>
+
+                    <p>
+                        Only upload documents you are comfortable storing
+                        in this browser-based demonstration.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= UPLOAD AREA ================= -->
+
+            <section class="upload-area" id="uploadArea">
+
+                <div class="upload-icon">
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                </div>
+
+
+                <h2>
+                    Upload Medical Documents
+                </h2>
+
+
+                <p>
+                    Drag and drop your files here or click to browse.
+                </p>
+
+
+                <button class="upload-browse-btn" onclick="openFilePicker()">
+
+                    <i class="fa-solid fa-folder-open"></i>
+
+                    Choose Files
+
+                </button>
+
+
+                <span class="upload-hint">
+                    PDF, JPG, JPEG, PNG · Maximum 2 MB per file
+                </span>
+
+
+                <input type="file" id="fileInput" hidden multiple accept=".pdf,.jpg,.jpeg,.png">
+
+            </section>
+
+
+            <!-- ================= SUMMARY ================= -->
+
+            <section class="history-summary-grid">
+
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon blue-bg">
+
+                        <i class="fa-solid fa-file"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Total Documents
+                        </span>
+
+                        <strong id="documentCount">
+                            00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon red-bg">
+
+                        <i class="fa-solid fa-file-pdf"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            PDF Reports
+                        </span>
+
+                        <strong id="pdfCount">
+                            00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon purple-bg">
+
+                        <i class="fa-solid fa-image"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Images
+                        </span>
+
+                        <strong id="imageCount">
+                            00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon teal-bg">
+
+                        <i class="fa-solid fa-hard-drive"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Storage Used
+                        </span>
+
+                        <strong id="storageUsed">
+                            0 KB
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= DOCUMENTS ================= -->
+
+            <section class="dashboard-card history-section">
+
+                <div class="section-card-header">
+
+                    <div>
+
+                        <h2>
+                            My Documents
+                        </h2>
+
+                        <p>
+                            Your uploaded medical reports and files.
+                        </p>
+
+                    </div>
+
+
+                    <button class="small-add-btn" onclick="openFilePicker()">
+
+                        <i class="fa-solid fa-upload"></i>
+
+                        Upload
+
+                    </button>
+
+                </div>
+
+
+                <div id="documentsList" class="documents-grid">
+
+                    <!-- JS inserts documents -->
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= SCRIPT ================= -->
+
+    <script>
+
+        /* =====================================================
+           DATA
+        ===================================================== */
+
+        let documents =
+            JSON.parse(
+                localStorage.getItem("healthGuideDocuments")
+            ) || [];
+
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+        const fileInput =
+            document.getElementById("fileInput");
+
+        const uploadArea =
+            document.getElementById("uploadArea");
+
+        const documentsList =
+            document.getElementById("documentsList");
+
+
+        /* =====================================================
+           OPEN FILE PICKER
+        ===================================================== */
+
+        function openFilePicker() {
+
+            fileInput.click();
+
+        }
+
+
+        /* =====================================================
+           FILE INPUT
+        ===================================================== */
+
+        fileInput.addEventListener(
+            "change",
+            function () {
+
+                handleFiles(
+                    Array.from(fileInput.files)
+                );
+
+                fileInput.value = "";
+
+            }
+        );
+
+
+        /* =====================================================
+           DRAG & DROP
+        ===================================================== */
+
+        uploadArea.addEventListener(
+            "dragover",
+            function (event) {
+
+                event.preventDefault();
+
+                uploadArea.classList.add("dragging");
+
+            }
+        );
+
+
+        uploadArea.addEventListener(
+            "dragleave",
+            function () {
+
+                uploadArea.classList.remove("dragging");
+
+            }
+        );
+
+
+        uploadArea.addEventListener(
+            "drop",
+            function (event) {
+
+                event.preventDefault();
+
+                uploadArea.classList.remove("dragging");
+
+                handleFiles(
+                    Array.from(event.dataTransfer.files)
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           HANDLE FILES
+        ===================================================== */
+
+        function handleFiles(files) {
+
+            files.forEach(file => {
+
+                const allowedTypes = [
+                    "application/pdf",
+                    "image/jpeg",
+                    "image/png"
+                ];
+
+
+                if (!allowedTypes.includes(file.type)) {
+
+                    alert(
+                        file.name +
+                        " is not a supported file type."
+                    );
+
+                    return;
+
+                }
+
+
+                if (file.size > 2 * 1024 * 1024) {
+
+                    alert(
+                        file.name +
+                        " is larger than 2 MB."
+                    );
+
+                    return;
+
+                }
+
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload = function (event) {
+
+                    const documentData = {
+
+                        id:
+                            Date.now() +
+                            Math.random(),
+
+                        name:
+                            file.name,
+
+                        type:
+                            file.type,
+
+                        size:
+                            file.size,
+
+                        data:
+                            event.target.result,
+
+                        date:
+                            new Date().toISOString()
+
+                    };
+
+
+                    documents.unshift(
+                        documentData
+                    );
+
+
+                    saveDocuments();
+
+                    displayDocuments();
+
+                };
+
+
+                reader.readAsDataURL(file);
+
+            });
+
+        }
+
+
+        /* =====================================================
+           DISPLAY
+        ===================================================== */
+
+        function displayDocuments() {
+
+            documentsList.innerHTML = "";
+
+
+            updateSummary();
+
+
+            if (documents.length === 0) {
+
+                documentsList.innerHTML = `
+
+                    <div class="empty-history">
+
+                        <div class="empty-history-icon">
+
+                            <i class="fa-solid fa-file-medical"></i>
+
+                        </div>
+
+                        <h3>
+                            No documents uploaded yet
+                        </h3>
+
+                        <p>
+                            Upload your medical reports,
+                            prescriptions or other health documents.
+                        </p>
+
+                        <button onclick="openFilePicker()">
+
+                            <i class="fa-solid fa-upload"></i>
+
+                            Upload Your First Document
+
+                        </button>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            documents.forEach(
+                (documentData, index) => {
+
+                    const card =
+                        document.createElement("div");
+
+                    card.className =
+                        "document-card";
+
+
+                    const isPDF =
+                        documentData.type ===
+                        "application/pdf";
+
+
+                    card.innerHTML = `
+
+                        <div class="document-preview">
+
+                            ${isPDF
+                            ?
+                            `
+                                <i class="fa-solid fa-file-pdf"></i>
+                                `
+                            :
+                            `
+                                <img
+                                    src="${documentData.data}"
+                                    alt="Medical document"
+                                >
+                                `
+                        }
+
+                        </div>
+
+
+                        <div class="document-card-body">
+
+                            <div class="document-name">
+
+                                <strong>
+                                    ${escapeHTML(documentData.name)}
+                                </strong>
+
+                            </div>
+
+
+                            <div class="document-meta">
+
+                                <span>
+                                    ${formatSize(documentData.size)}
+                                </span>
+
+                                <span>
+                                    ${formatDate(documentData.date)}
+                                </span>
+
+                            </div>
+
+
+                            <div class="document-actions">
+
+                                <button
+                                    onclick="viewDocument(${index})"
+                                >
+                                    <i class="fa-solid fa-eye"></i>
+                                    View
+                                </button>
+
+
+                                <button
+                                    onclick="deleteDocument(${index})"
+                                    class="delete-document"
+                                >
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+                    documentsList.appendChild(card);
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           VIEW DOCUMENT
+        ===================================================== */
+
+        function viewDocument(index) {
+
+            const documentData =
+                documents[index];
+
+
+            const newWindow =
+                window.open();
+
+
+            if (!newWindow) {
+
+                alert(
+                    "Please allow pop-ups to view the document."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                documentData.type ===
+                "application/pdf"
+            ) {
+
+                newWindow.document.write(`
+
+                    <html>
+
+                    <head>
+
+                        <title>
+                            ${escapeHTML(documentData.name)}
+                        </title>
+
+                        <style>
+
+                            body {
+                                margin: 0;
+                                background: #f5f8fa;
+                            }
+
+                            iframe {
+                                width: 100vw;
+                                height: 100vh;
+                                border: none;
+                            }
+
+                        </style>
+
+                    </head>
+
+                    <body>
+
+                        <iframe
+                            src="${documentData.data}"
+                        ></iframe>
+
+                    </body>
+
+                    </html>
+
+                `);
+
+            } else {
+
+                newWindow.document.write(`
+
+                    <html>
+
+                    <head>
+
+                        <title>
+                            ${escapeHTML(documentData.name)}
+                        </title>
+
+                        <style>
+
+                            body {
+                                margin: 0;
+                                min-height: 100vh;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                background: #f5f8fa;
+                            }
+
+                            img {
+                                max-width: 95%;
+                                max-height: 95vh;
+                                object-fit: contain;
+                            }
+
+                        </style>
+
+                    </head>
+
+                    <body>
+
+                        <img
+                            src="${documentData.data}"
+                            alt="Medical document"
+                        >
+
+                    </body>
+
+                    </html>
+
+                `);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           DELETE
+        ===================================================== */
+
+        function deleteDocument(index) {
+
+            if (
+                !confirm(
+                    "Are you sure you want to delete this document?"
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            documents.splice(index, 1);
+
+
+            saveDocuments();
+
+            displayDocuments();
+
+        }
+
+
+        /* =====================================================
+           SAVE
+        ===================================================== */
+
+        function saveDocuments() {
+
+            try {
+
+                localStorage.setItem(
+                    "healthGuideDocuments",
+                    JSON.stringify(documents)
+                );
+
+            } catch (error) {
+
+                alert(
+                    "Browser storage is full. Please remove some documents."
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SUMMARY
+        ===================================================== */
+
+        function updateSummary() {
+
+            const pdfs =
+                documents.filter(
+                    item =>
+                        item.type ===
+                        "application/pdf"
+                ).length;
+
+
+            const images =
+                documents.filter(
+                    item =>
+                        item.type.startsWith("image/")
+                ).length;
+
+
+            const totalSize =
+                documents.reduce(
+                    (total, item) =>
+                        total + item.size,
+                    0
+                );
+
+
+            document
+                .getElementById("documentCount")
+                .textContent =
+                String(documents.length)
+                    .padStart(2, "0");
+
+
+            document
+                .getElementById("pdfCount")
+                .textContent =
+                String(pdfs)
+                    .padStart(2, "0");
+
+
+            document
+                .getElementById("imageCount")
+                .textContent =
+                String(images)
+                    .padStart(2, "0");
+
+
+            document
+                .getElementById("storageUsed")
+                .textContent =
+                formatSize(totalSize);
+
+        }
+
+
+        /* =====================================================
+           HELPERS
+        ===================================================== */
+
+        function formatSize(bytes) {
+
+            if (bytes < 1024) {
+
+                return bytes + " B";
+
+            }
+
+            if (bytes < 1024 * 1024) {
+
+                return (
+                    (bytes / 1024).toFixed(1) +
+                    " KB"
+                );
+
+            }
+
+            return (
+                (bytes / (1024 * 1024)).toFixed(1) +
+                " MB"
+            );
+
+        }
+
+
+        function formatDate(dateString) {
+
+            return new Date(dateString)
+                .toLocaleDateString(
+                    "en-IN",
+                    {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric"
+                    }
+                );
+
+        }
+
+
+        function escapeHTML(value) {
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        function toggleSidebar() {
+
+            document
+                .getElementById("sidebar")
+                .classList
+                .toggle("show");
+
+        }
+
+
+        /* =====================================================
+   USER NAME
+===================================================== */
+
+        const savedName =
+            localStorage.getItem("healthGuideUserName");
+
+        const savedUser =
+            localStorage.getItem("healthGuideUser");
+
+        if (savedName) {
+
+            document
+                .getElementById("headerName")
+                .textContent = savedName;
+
+        } else if (savedUser) {
+
+            const username =
+                savedUser.split("@")[0];
+
+            const formattedName =
+                username.charAt(0).toUpperCase() +
+                username.slice(1);
+
+            document
+                .getElementById("headerName")
+                .textContent =
+                formattedName;
+        }
+
+
+        /* =====================================================
+           LOGOUT
+        ===================================================== */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener(
+                "click",
+                function () {
+
+                    localStorage.removeItem(
+                        "healthGuideUser"
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           INITIAL LOAD
+        ===================================================== */
+
+        displayDocuments();
+
+    </script>
+
+</body>
+
+</html>

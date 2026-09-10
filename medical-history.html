@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Medical History | HealthGuide AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="dashboard-page">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <span>
+                HealthGuide <strong>AI</strong>
+            </span>
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN</p>
+
+            <a href="dashboard.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="medical-history.html" class="nav-item active">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span>Medical History</span>
+            </a>
+
+            <a href="medications.html" class="nav-item">
+                <i class="fa-solid fa-pills"></i>
+                <span>Medications</span>
+            </a>
+
+            <a href="allergies.html" class="nav-item">
+                <i class="fa-solid fa-hand-dots"></i>
+                <span>Allergies</span>
+            </a>
+
+            <a href="medical-documents.html" class="nav-item">
+                <i class="fa-solid fa-file-medical"></i>
+                <span>Medical Documents</span>
+            </a>
+
+            <a href="health-timeline.html" class="nav-item">
+                <i class="fa-solid fa-timeline"></i>
+                <span>Health Timeline</span>
+            </a>
+
+
+            <p class="nav-title second-title">HEALTH TOOLS</p>
+
+            <a href="ai-assistant.html" class="nav-item">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI Health Assistant</span>
+            </a>
+
+            <a href="symptom-checker.html" class="nav-item">
+                <i class="fa-solid fa-stethoscope"></i>
+                <span>Check My Symptoms</span>
+            </a>
+
+            <a href="health-library.html" class="nav-item">
+                <i class="fa-solid fa-book-medical"></i>
+                <span>Health Library</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="profile-settings.html" class="nav-item">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Profile & Settings</span>
+            </a>
+
+            <a href="index.html" class="nav-item logout-item" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="dashboard-main">
+
+        <!-- Header -->
+
+        <header class="dashboard-header">
+
+            <button class="mobile-menu" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="header-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text" placeholder="Search your health information...">
+
+            </div>
+
+
+            <div class="header-right">
+
+                <button class="notification-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span></span>
+                </button>
+
+                <div class="header-profile">
+
+                    <div class="header-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+                        <strong id="headerName">Patient</strong>
+                        <small>Patient Account</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <main class="dashboard-content">
+
+
+            <!-- Page Heading -->
+
+            <section class="page-heading">
+
+                <div>
+
+                    <p class="welcome-label">
+                        HEALTH RECORDS
+                    </p>
+
+                    <h1>My Medical History</h1>
+
+                    <p>
+                        Keep track of your medical conditions and important
+                        health records in one place.
+                    </p>
+
+                </div>
+
+
+                <button class="quick-action" onclick="openConditionModal()">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Condition
+                </button>
+
+            </section>
+
+
+            <!-- Safety -->
+
+            <section class="dashboard-safety">
+
+                <div class="safety-small-icon">
+                    <i class="fa-solid fa-shield-heart"></i>
+                </div>
+
+                <div>
+
+                    <strong>Your medical information is private</strong>
+
+                    <p>
+                        Keep your records accurate and up to date.
+                        This information should only be used to support
+                        conversations with healthcare professionals.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- Summary Cards -->
+
+            <section class="history-summary-grid">
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon blue-bg">
+                        <i class="fa-solid fa-notes-medical"></i>
+                    </div>
+
+                    <div>
+                        <span>Conditions</span>
+                        <strong id="conditionCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon teal-bg">
+                        <i class="fa-solid fa-pills"></i>
+                    </div>
+
+                    <div>
+                        <span>Medications</span>
+                        <strong>03</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon orange-bg">
+                        <i class="fa-solid fa-hand-dots"></i>
+                    </div>
+
+                    <div>
+                        <span>Allergies</span>
+                        <strong>02</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon purple-bg">
+                        <i class="fa-solid fa-syringe"></i>
+                    </div>
+
+                    <div>
+                        <span>Vaccinations</span>
+                        <strong>05</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Conditions -->
+
+            <section class="dashboard-card history-section">
+
+                <div class="section-card-header">
+
+                    <div>
+
+                        <h2>Diseases & Conditions</h2>
+
+                        <p>
+                            Conditions that have been recorded in your
+                            medical history.
+                        </p>
+
+                    </div>
+
+                    <button class="small-add-btn" onclick="openConditionModal()">
+                        <i class="fa-solid fa-plus"></i>
+                        Add
+                    </button>
+
+                </div>
+
+
+                <div id="conditionsList" class="conditions-list">
+
+                    <!-- Conditions will appear here -->
+
+                </div>
+
+            </section>
+
+
+            <!-- Other Records -->
+
+            <section class="history-record-grid">
+
+
+                <div class="dashboard-card empty-record-card">
+
+                    <div class="record-header">
+
+                        <div class="heading-icon teal-bg">
+                            <i class="fa-solid fa-pills"></i>
+                        </div>
+
+                        <div>
+                            <h2>Medications</h2>
+                            <p>Current medications</p>
+                        </div>
+
+                    </div>
+
+                    <div class="empty-record">
+
+                        <i class="fa-solid fa-pills"></i>
+
+                        <p>
+                            Medication records will appear here.
+                        </p>
+
+                        <button>
+                            Add Medication
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card empty-record-card">
+
+                    <div class="record-header">
+
+                        <div class="heading-icon orange-bg">
+                            <i class="fa-solid fa-hand-dots"></i>
+                        </div>
+
+                        <div>
+                            <h2>Allergies</h2>
+                            <p>Known allergies and reactions</p>
+                        </div>
+
+                    </div>
+
+                    <div class="empty-record">
+
+                        <i class="fa-solid fa-hand-dots"></i>
+
+                        <p>
+                            Allergy records will appear here.
+                        </p>
+
+                        <button>
+                            Add Allergy
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- Timeline Preview -->
+
+            <section class="dashboard-card history-section">
+
+                <div class="section-card-header">
+
+                    <div>
+
+                        <h2>Health History Timeline</h2>
+
+                        <p>
+                            Your medical records organized chronologically.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="history-timeline">
+
+                    <div class="history-timeline-item">
+
+                        <div class="history-line-dot"></div>
+
+                        <div>
+
+                            <span class="timeline-date">
+                                Your records
+                            </span>
+
+                            <strong>
+                                Medical history timeline
+                            </strong>
+
+                            <p>
+                                Conditions, medications, surgeries,
+                                vaccinations and other health events
+                                will appear here.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= MODAL ================= -->
+
+    <div class="modal-overlay" id="conditionModal">
+
+        <div class="condition-modal">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <div class="modal-icon">
+                        <i class="fa-solid fa-notes-medical"></i>
+                    </div>
+
+                    <div>
+                        <h2 id="modalTitle">
+                            Add Medical Condition
+                        </h2>
+
+                        <p>
+                            Add information about a previous or current
+                            medical condition.
+                        </p>
+                    </div>
+
+                </div>
+
+                <button onclick="closeConditionModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <form id="conditionForm">
+
+                <input type="hidden" id="editIndex">
+
+
+                <div class="form-group">
+
+                    <label for="conditionName">
+                        Condition Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-notes-medical"></i>
+
+                        <input type="text" id="conditionName" placeholder="e.g. Asthma" required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="diagnosisDate">
+                            Date Diagnosed
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-calendar"></i>
+
+                            <input type="date" id="diagnosisDate" required>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="conditionStatus">
+                            Current Status
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            <select id="conditionStatus">
+
+                                <option value="Active">
+                                    Active
+                                </option>
+
+                                <option value="Managed">
+                                    Managed
+                                </option>
+
+                                <option value="Resolved">
+                                    Resolved
+                                </option>
+
+                                <option value="Under Treatment">
+                                    Under Treatment
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="doctorHospital">
+                        Doctor / Hospital
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-hospital"></i>
+
+                        <input type="text" id="doctorHospital" placeholder="e.g. City Hospital">
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="conditionNotes">
+                        Notes
+                    </label>
+
+                    <textarea id="conditionNotes" placeholder="Add any relevant notes..."></textarea>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button type="button" class="cancel-btn" onclick="closeConditionModal()">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="save-btn">
+                        <i class="fa-solid fa-check"></i>
+                        Save Condition
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* =====================================================
+           MEDICAL CONDITIONS
+        ===================================================== */
+
+        let conditions =
+            JSON.parse(
+                localStorage.getItem("healthGuideConditions")
+            ) || [];
+
+
+        const conditionsList =
+            document.getElementById("conditionsList");
+
+        const conditionCount =
+            document.getElementById("conditionCount");
+
+
+        /* ================= DISPLAY ================= */
+
+        function displayConditions() {
+
+            conditionsList.innerHTML = "";
+
+            conditionCount.textContent =
+                String(conditions.length).padStart(2, "0");
+
+
+            if (conditions.length === 0) {
+
+                conditionsList.innerHTML = `
+
+                    <div class="empty-history">
+
+                        <div class="empty-history-icon">
+                            <i class="fa-solid fa-notes-medical"></i>
+                        </div>
+
+                        <h3>No conditions added yet</h3>
+
+                        <p>
+                            Add your medical conditions to keep
+                            your health history organized.
+                        </p>
+
+                        <button onclick="openConditionModal()">
+                            <i class="fa-solid fa-plus"></i>
+                            Add Your First Condition
+                        </button>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            conditions.forEach((condition, index) => {
+
+                const item =
+                    document.createElement("div");
+
+                item.className = "condition-item";
+
+
+                item.innerHTML = `
+
+                    <div class="condition-icon">
+                        <i class="fa-solid fa-notes-medical"></i>
+                    </div>
+
+                    <div class="condition-info">
+
+                        <div class="condition-title">
+
+                            <strong>
+                                ${escapeHTML(condition.name)}
+                            </strong>
+
+                            <span class="status-badge ${getStatusClass(condition.status)}">
+                                ${escapeHTML(condition.status)}
+                            </span>
+
+                        </div>
+
+                        <div class="condition-details">
+
+                            <span>
+                                <i class="fa-regular fa-calendar"></i>
+                                Diagnosed:
+                                ${formatDate(condition.date)}
+                            </span>
+
+                            ${condition.doctor
+                        ?
+                        `
+                                <span>
+                                    <i class="fa-solid fa-hospital"></i>
+                                    ${escapeHTML(condition.doctor)}
+                                </span>
+                                `
+                        :
+                        ""
+                    }
+
+                        </div>
+
+                        ${condition.notes
+                        ?
+                        `
+                            <p class="condition-notes">
+                                ${escapeHTML(condition.notes)}
+                            </p>
+                            `
+                        :
+                        ""
+                    }
+
+                    </div>
+
+
+                    <div class="condition-actions">
+
+                        <button
+                            onclick="editCondition(${index})"
+                            title="Edit"
+                        >
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                        <button
+                            onclick="deleteCondition(${index})"
+                            title="Delete"
+                        >
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                conditionsList.appendChild(item);
+
+            });
+
+        }
+
+
+        /* ================= STATUS ================= */
+
+        function getStatusClass(status) {
+
+            if (status === "Active") {
+                return "status-active";
+            }
+
+            if (status === "Managed") {
+                return "status-managed";
+            }
+
+            if (status === "Resolved") {
+                return "status-resolved";
+            }
+
+            return "status-treatment";
+        }
+
+
+        /* ================= DATE ================= */
+
+        function formatDate(dateString) {
+
+            if (!dateString) return "Not specified";
+
+            const date =
+                new Date(dateString + "T00:00:00");
+
+            return date.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+
+        }
+
+
+        /* ================= ESCAPE HTML ================= */
+
+        function escapeHTML(value) {
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        /* ================= MODAL ================= */
+
+        function openConditionModal() {
+
+            document
+                .getElementById("conditionModal")
+                .classList.add("show");
+
+            document
+                .getElementById("conditionForm")
+                .reset();
+
+            document
+                .getElementById("editIndex")
+                .value = "";
+
+            document
+                .getElementById("modalTitle")
+                .textContent =
+                "Add Medical Condition";
+
+        }
+
+
+        function closeConditionModal() {
+
+            document
+                .getElementById("conditionModal")
+                .classList.remove("show");
+
+        }
+
+
+        /* ================= ADD / EDIT ================= */
+
+        document
+            .getElementById("conditionForm")
+            .addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const name =
+                        document
+                            .getElementById("conditionName")
+                            .value
+                            .trim();
+
+                    const date =
+                        document
+                            .getElementById("diagnosisDate")
+                            .value;
+
+                    const status =
+                        document
+                            .getElementById("conditionStatus")
+                            .value;
+
+                    const doctor =
+                        document
+                            .getElementById("doctorHospital")
+                            .value
+                            .trim();
+
+                    const notes =
+                        document
+                            .getElementById("conditionNotes")
+                            .value
+                            .trim();
+
+                    const editIndex =
+                        document
+                            .getElementById("editIndex")
+                            .value;
+
+
+                    const condition = {
+
+                        name,
+                        date,
+                        status,
+                        doctor,
+                        notes
+
+                    };
+
+
+                    if (editIndex === "") {
+
+                        conditions.push(condition);
+
+                    } else {
+
+                        conditions[
+                            Number(editIndex)
+                        ] = condition;
+
+                    }
+
+
+                    localStorage.setItem(
+                        "healthGuideConditions",
+                        JSON.stringify(conditions)
+                    );
+
+
+                    displayConditions();
+
+                    closeConditionModal();
+
+                }
+            );
+
+
+        /* ================= EDIT ================= */
+
+        function editCondition(index) {
+
+            const condition =
+                conditions[index];
+
+
+            document
+                .getElementById("conditionModal")
+                .classList.add("show");
+
+
+            document
+                .getElementById("modalTitle")
+                .textContent =
+                "Edit Medical Condition";
+
+
+            document
+                .getElementById("editIndex")
+                .value = index;
+
+
+            document
+                .getElementById("conditionName")
+                .value = condition.name;
+
+
+            document
+                .getElementById("diagnosisDate")
+                .value = condition.date;
+
+
+            document
+                .getElementById("conditionStatus")
+                .value = condition.status;
+
+
+            document
+                .getElementById("doctorHospital")
+                .value = condition.doctor;
+
+
+            document
+                .getElementById("conditionNotes")
+                .value = condition.notes;
+
+        }
+
+
+        /* ================= DELETE ================= */
+
+        function deleteCondition(index) {
+
+            const confirmed =
+                confirm(
+                    "Are you sure you want to delete this medical condition?"
+                );
+
+
+            if (!confirmed) return;
+
+
+            conditions.splice(index, 1);
+
+
+            localStorage.setItem(
+                "healthGuideConditions",
+                JSON.stringify(conditions)
+            );
+
+
+            displayConditions();
+
+        }
+
+
+        /* ================= SIDEBAR ================= */
+
+        function toggleSidebar() {
+
+            document
+                .getElementById("sidebar")
+                .classList.toggle("show");
+
+        }
+
+
+        /* ================= LOGOUT ================= */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener(
+                "click",
+                function () {
+
+                    localStorage.removeItem(
+                        "healthGuideUser"
+                    );
+
+                }
+            );
+
+
+        /* ================= USER NAME ================= */
+
+        const savedName =
+            localStorage.getItem("healthGuideUserName");
+
+        const savedUser =
+            localStorage.getItem("healthGuideUser");
+
+        if (savedName) {
+
+            document
+                .getElementById("headerName")
+                .textContent = savedName;
+
+        } else if (savedUser) {
+
+            const username =
+                savedUser.split("@")[0];
+
+            const formattedName =
+                username.charAt(0).toUpperCase() +
+                username.slice(1);
+
+            document
+                .getElementById("headerName")
+                .textContent =
+                formattedName;
+        }
+
+
+        /* ================= INITIAL LOAD ================= */
+
+        displayConditions();
+
+    </script>
+
+</body>
+
+</html>

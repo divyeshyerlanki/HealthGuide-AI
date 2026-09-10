@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile & Settings | HealthGuide AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+
+<body class="dashboard-page">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <span>
+                HealthGuide <strong>AI</strong>
+            </span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN</p>
+
+            <a href="dashboard.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="medical-history.html" class="nav-item">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span>Medical History</span>
+            </a>
+
+            <a href="medications.html" class="nav-item">
+                <i class="fa-solid fa-pills"></i>
+                <span>Medications</span>
+            </a>
+
+            <a href="allergies.html" class="nav-item">
+                <i class="fa-solid fa-hand-dots"></i>
+                <span>Allergies</span>
+            </a>
+
+            <a href="medical-documents.html" class="nav-item">
+                <i class="fa-solid fa-file-medical"></i>
+                <span>Medical Documents</span>
+            </a>
+
+            <a href="health-timeline.html" class="nav-item">
+                <i class="fa-solid fa-timeline"></i>
+                <span>Health Timeline</span>
+            </a>
+
+
+            <p class="nav-title second-title">
+                HEALTH TOOLS
+            </p>
+
+            <a href="ai-assistant.html" class="nav-item">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI Health Assistant</span>
+            </a>
+
+            <a href="symptom-checker.html" class="nav-item">
+                <i class="fa-solid fa-stethoscope"></i>
+                <span>Check My Symptoms</span>
+            </a>
+
+            <a href="health-library.html" class="nav-item">
+                <i class="fa-solid fa-book-medical"></i>
+                <span>Health Library</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="profile-settings.html" class="nav-item active">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Profile & Settings</span>
+            </a>
+
+            <a href="index.html" class="nav-item logout-item" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="dashboard-main">
+
+
+        <!-- HEADER -->
+
+        <header class="dashboard-header">
+
+            <button class="mobile-menu" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+
+            <div class="header-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text" placeholder="Search your health information...">
+
+            </div>
+
+
+            <div class="header-right">
+
+                <button class="notification-btn">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span></span>
+
+                </button>
+
+
+                <div class="header-profile">
+
+                    <div class="header-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+
+                        <strong id="headerName">
+                            Patient
+                        </strong>
+
+                        <small>
+                            Patient Account
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <main class="dashboard-content">
+
+
+            <!-- PAGE HEADING -->
+
+            <section class="page-heading">
+
+                <div>
+
+                    <p class="welcome-label">
+                        ACCOUNT
+                    </p>
+
+                    <h1>
+                        Profile & Settings
+                    </h1>
+
+                    <p>
+                        Manage your account information and preferences.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PROFILE ================= -->
+
+            <section class="dashboard-card profile-card">
+
+                <div class="profile-card-header">
+
+                    <div class="profile-large-avatar">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h2 id="profileName">
+                            Patient
+                        </h2>
+
+                        <p id="profileEmail">
+                            No email available
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-divider"></div>
+
+
+                <form id="profileForm">
+
+                    <div class="profile-form-grid">
+
+
+                        <div class="form-group">
+
+                            <label for="profileNameInput">
+                                Full Name
+                            </label>
+
+                            <input type="text" id="profileNameInput" placeholder="Enter your name">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="profileEmailInput">
+                                Email Address
+                            </label>
+
+                            <input type="email" id="profileEmailInput" placeholder="Enter your email" readonly>
+
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" class="primary-btn">
+
+                        <i class="fa-solid fa-floppy-disk"></i>
+
+                        Save Changes
+
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- ================= PREFERENCES ================= -->
+
+            <section class="dashboard-card settings-card">
+
+                <div class="settings-header">
+
+                    <div class="settings-icon">
+
+                        <i class="fa-solid fa-bell"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            Notifications
+                        </h2>
+
+                        <p>
+                            Manage how HealthGuide AI keeps you informed.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-option">
+
+                    <div>
+
+                        <strong>
+                            Health reminders
+                        </strong>
+
+                        <p>
+                            Receive reminders about your health records.
+                        </p>
+
+                    </div>
+
+
+                    <label class="toggle-switch">
+
+                        <input type="checkbox" id="healthReminders">
+
+                        <span class="toggle-slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="settings-option">
+
+                    <div>
+
+                        <strong>
+                            Health tips
+                        </strong>
+
+                        <p>
+                            Receive general health and wellness tips.
+                        </p>
+
+                    </div>
+
+
+                    <label class="toggle-switch">
+
+                        <input type="checkbox" id="healthTips">
+
+                        <span class="toggle-slider"></span>
+
+                    </label>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PRIVACY ================= -->
+
+            <section class="dashboard-card settings-card">
+
+                <div class="settings-header">
+
+                    <div class="settings-icon privacy-icon">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            Privacy & Security
+                        </h2>
+
+                        <p>
+                            Keep your HealthGuide AI account secure.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="privacy-info">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <div>
+
+                        <strong>
+                            Your health data
+                        </strong>
+
+                        <p>
+                            This demo stores your health records locally
+                            in your browser using localStorage.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= LOGOUT ================= -->
+
+            <section class="dashboard-card danger-settings-card">
+
+                <div>
+
+                    <h2>
+                        Sign out
+                    </h2>
+
+                    <p>
+                        Sign out of your HealthGuide AI account.
+                    </p>
+
+                </div>
+
+
+                <button class="logout-profile-btn" onclick="logoutUser()">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    Logout
+
+                </button>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* =====================================================
+           LOAD USER
+        ===================================================== */
+
+        const savedUser =
+            localStorage.getItem(
+                "healthGuideUser"
+            );
+
+
+        let currentEmail = savedUser || "";
+
+
+        const profileName =
+            document.getElementById(
+                "profileName"
+            );
+
+
+        const profileEmail =
+            document.getElementById(
+                "profileEmail"
+            );
+
+
+        const profileNameInput =
+            document.getElementById(
+                "profileNameInput"
+            );
+
+
+        const profileEmailInput =
+            document.getElementById(
+                "profileEmailInput"
+            );
+
+
+        const headerName =
+            document.getElementById(
+                "headerName"
+            );
+
+
+        if (savedUser) {
+
+            const username =
+                savedUser.split("@")[0];
+
+
+            const formattedName =
+                username.charAt(0).toUpperCase() +
+                username.slice(1);
+
+
+            profileName.textContent =
+                formattedName;
+
+
+            profileEmail.textContent =
+                savedUser;
+
+
+            profileNameInput.value =
+                formattedName;
+
+
+            profileEmailInput.value =
+                savedUser;
+
+
+            headerName.textContent =
+                formattedName;
+
+        }
+
+
+        /* =====================================================
+           SAVE PROFILE
+        ===================================================== */
+
+        document
+            .getElementById("profileForm")
+            .addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const newName =
+                        profileNameInput.value.trim();
+
+
+                    if (!newName) {
+
+                        alert(
+                            "Please enter your name."
+                        );
+
+                        return;
+
+                    }
+
+
+                    profileName.textContent =
+                        newName;
+
+
+                    headerName.textContent =
+                        newName;
+
+
+                    /*
+                       Save display name separately.
+                    */
+
+                    localStorage.setItem(
+                        "healthGuideUserName",
+                        newName
+                    );
+
+
+                    alert(
+                        "Profile updated successfully!"
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           LOAD SAVED NAME
+        ===================================================== */
+
+        const savedName =
+            localStorage.getItem(
+                "healthGuideUserName"
+            );
+
+
+        if (savedName) {
+
+            profileName.textContent =
+                savedName;
+
+            profileNameInput.value =
+                savedName;
+
+            headerName.textContent =
+                savedName;
+
+        }
+
+
+        /* =====================================================
+           NOTIFICATION SETTINGS
+        ===================================================== */
+
+        const healthReminders =
+            document.getElementById(
+                "healthReminders"
+            );
+
+
+        const healthTips =
+            document.getElementById(
+                "healthTips"
+            );
+
+
+        healthReminders.checked =
+            localStorage.getItem(
+                "healthGuideReminders"
+            ) === "true";
+
+
+        healthTips.checked =
+            localStorage.getItem(
+                "healthGuideTips"
+            ) === "true";
+
+
+        healthReminders.addEventListener(
+            "change",
+            function () {
+
+                localStorage.setItem(
+                    "healthGuideReminders",
+                    this.checked
+                );
+
+            }
+        );
+
+
+        healthTips.addEventListener(
+            "change",
+            function () {
+
+                localStorage.setItem(
+                    "healthGuideTips",
+                    this.checked
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           LOGOUT
+        ===================================================== */
+
+        function logoutUser() {
+
+            localStorage.removeItem(
+                "healthGuideUser"
+            );
+
+            window.location.href =
+                "index.html";
+
+        }
+
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener(
+                "click",
+                function () {
+
+                    localStorage.removeItem(
+                        "healthGuideUser"
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        function toggleSidebar() {
+
+            document
+                .getElementById("sidebar")
+                .classList
+                .toggle("show");
+
+        }
+
+    </script>
+
+</body>
+
+</html>

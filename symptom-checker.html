@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Check My Symptoms | HealthGuide AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+
+<body class="dashboard-page">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <span>
+                HealthGuide <strong>AI</strong>
+            </span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN</p>
+
+            <a href="dashboard.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="medical-history.html" class="nav-item">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span>Medical History</span>
+            </a>
+
+            <a href="medications.html" class="nav-item">
+                <i class="fa-solid fa-pills"></i>
+                <span>Medications</span>
+            </a>
+
+            <a href="allergies.html" class="nav-item">
+                <i class="fa-solid fa-hand-dots"></i>
+                <span>Allergies</span>
+            </a>
+
+            <a href="medical-documents.html" class="nav-item">
+                <i class="fa-solid fa-file-medical"></i>
+                <span>Medical Documents</span>
+            </a>
+
+            <a href="health-timeline.html" class="nav-item">
+                <i class="fa-solid fa-timeline"></i>
+                <span>Health Timeline</span>
+            </a>
+
+
+            <p class="nav-title second-title">
+                HEALTH TOOLS
+            </p>
+
+            <a href="ai-assistant.html" class="primary-btn" id="askAIButton" onclick="prepareAIQuestion()">
+                <i class="fa-solid fa-robot"></i>
+                Ask AI Assistant
+            </a>
+
+            <a href="symptom-checker.html" class="nav-item active">
+                <i class="fa-solid fa-stethoscope"></i>
+                <span>Check My Symptoms</span>
+            </a>
+
+            <a href="health-library.html" class="nav-item">
+                <i class="fa-solid fa-book-medical"></i>
+                <span>Health Library</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="profile-settings.html" class="nav-item">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Profile & Settings</span>
+            </a>
+
+            <a href="index.html" class="nav-item logout-item" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="dashboard-main">
+
+
+        <!-- HEADER -->
+
+        <header class="dashboard-header">
+
+            <button class="mobile-menu" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+
+            <div class="header-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text" placeholder="Search your health information...">
+
+            </div>
+
+
+            <div class="header-right">
+
+                <button class="notification-btn">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span></span>
+
+                </button>
+
+
+                <div class="header-profile">
+
+                    <div class="header-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+
+                        <strong id="headerName">
+                            Patient
+                        </strong>
+
+                        <small>
+                            Patient Account
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <main class="dashboard-content">
+
+
+            <!-- PAGE HEADING -->
+
+            <section class="page-heading">
+
+                <div>
+
+                    <p class="welcome-label">
+                        HEALTH TOOLS
+                    </p>
+
+                    <h1>
+                        Check My Symptoms
+                    </h1>
+
+                    <p>
+                        Get general health guidance based on the
+                        symptoms you enter.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- SAFETY NOTICE -->
+
+            <section class="dashboard-safety">
+
+                <div class="safety-small-icon">
+
+                    <i class="fa-solid fa-shield-heart"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        This is not a diagnosis
+                    </strong>
+
+                    <p>
+                        This tool provides general health information
+                        only. It cannot diagnose medical conditions.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= SYMPTOM FORM ================= -->
+
+            <section class="dashboard-card symptom-card">
+
+                <div class="symptom-card-header">
+
+                    <div class="symptom-title-icon">
+
+                        <i class="fa-solid fa-stethoscope"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            Tell us about your symptoms
+                        </h2>
+
+                        <p>
+                            Provide some basic information below.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="symptomForm">
+
+
+                    <!-- SYMPTOMS -->
+
+                    <div class="form-group">
+
+                        <label for="symptoms">
+                            What symptoms are you experiencing?
+                        </label>
+
+                        <textarea id="symptoms" placeholder="Example: headache, sore throat, cough..." rows="4"
+                            required></textarea>
+
+                        <small>
+                            Separate multiple symptoms with commas.
+                        </small>
+
+                    </div>
+
+
+                    <!-- DURATION -->
+
+                    <div class="symptom-form-grid">
+
+                        <div class="form-group">
+
+                            <label for="duration">
+                                How long have you had them?
+                            </label>
+
+                            <select id="duration" required>
+
+                                <option value="">
+                                    Select duration
+                                </option>
+
+                                <option value="less-day">
+                                    Less than a day
+                                </option>
+
+                                <option value="1-3-days">
+                                    1–3 days
+                                </option>
+
+                                <option value="4-7-days">
+                                    4–7 days
+                                </option>
+
+                                <option value="more-week">
+                                    More than a week
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- SEVERITY -->
+
+                        <div class="form-group">
+
+                            <label for="severity">
+                                How severe are they?
+                            </label>
+
+                            <select id="severity" required>
+
+                                <option value="">
+                                    Select severity
+                                </option>
+
+                                <option value="mild">
+                                    Mild
+                                </option>
+
+                                <option value="moderate">
+                                    Moderate
+                                </option>
+
+                                <option value="severe">
+                                    Severe
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- OTHER SYMPTOMS -->
+
+                    <div class="form-group">
+
+                        <label for="otherSymptoms">
+                            Anything else you'd like to mention?
+                        </label>
+
+                        <textarea id="otherSymptoms" placeholder="Example: feeling tired, loss of appetite..."
+                            rows="3"></textarea>
+
+                    </div>
+
+
+                    <!-- BUTTON -->
+
+                    <button type="submit" class="primary-btn symptom-check-btn">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        Check Symptoms
+
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- ================= RESULT ================= -->
+
+            <section class="dashboard-card symptom-result-card" id="resultCard" style="display: none;">
+
+                <div class="result-header">
+
+                    <div class="result-icon">
+
+                        <i class="fa-solid fa-clipboard-check"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            General Guidance
+                        </h2>
+
+                        <p>
+                            Based on the information you provided.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="resultContent">
+
+                    <!-- Result inserted here -->
+
+                </div>
+
+
+                <div class="result-actions">
+
+                    <button class="secondary-btn" onclick="resetChecker()">
+
+                        <i class="fa-solid fa-rotate-left"></i>
+
+                        Check Again
+
+                    </button>
+
+
+                    <a href="ai-assistant.html" class="primary-btn" onclick="prepareAIQuestion()">
+
+                        <i class="fa-solid fa-robot"></i>
+
+                        Ask AI Assistant
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* =====================================================
+           FORM SUBMIT
+        ===================================================== */
+
+        document
+            .getElementById("symptomForm")
+            .addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+                    checkSymptoms();
+
+                }
+            );
+
+
+        /* =====================================================
+           CHECK SYMPTOMS
+        ===================================================== */
+
+        function checkSymptoms() {
+
+            const symptoms =
+                document
+                    .getElementById("symptoms")
+                    .value
+                    .trim();
+
+            const duration =
+                document
+                    .getElementById("duration")
+                    .value;
+
+            const severity =
+                document
+                    .getElementById("severity")
+                    .value;
+
+            const otherSymptoms =
+                document
+                    .getElementById("otherSymptoms")
+                    .value
+                    .trim();
+
+
+            const resultCard =
+                document
+                    .getElementById("resultCard");
+
+            const resultContent =
+                document
+                    .getElementById("resultContent");
+
+
+            /* =================================================
+               EMERGENCY KEYWORDS
+            ================================================= */
+
+            const emergencyWords = [
+
+                "chest pain",
+                "difficulty breathing",
+                "can't breathe",
+                "cannot breathe",
+                "severe bleeding",
+                "unconscious",
+                "fainted",
+                "seizure",
+                "stroke",
+                "paralysis",
+                "severe allergic reaction"
+
+            ];
+
+
+            const allText =
+                (
+                    symptoms +
+                    " " +
+                    otherSymptoms
+                ).toLowerCase();
+
+
+            const emergencyDetected =
+                emergencyWords.some(
+                    word =>
+                        allText.includes(word)
+                );
+
+
+            /* =================================================
+               EMERGENCY RESULT
+            ================================================= */
+
+            if (emergencyDetected) {
+
+                resultContent.innerHTML = `
+
+                    <div class="emergency-result">
+
+                        <div class="emergency-result-icon">
+
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Seek urgent medical attention
+                            </h3>
+
+                            <p>
+                                One or more symptoms you entered
+                                may require urgent evaluation.
+                                Please contact your local emergency
+                                service or seek immediate medical care.
+                            </p>
+
+                            <p>
+                                Do not rely on this tool to determine
+                                whether an emergency is occurring.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            /* =================================================
+               SEVERE
+            ================================================= */
+
+            else if (severity === "severe") {
+
+                resultContent.innerHTML = `
+
+                    <div class="guidance-result severe-result">
+
+                        <i class="fa-solid fa-circle-exclamation"></i>
+
+                        <div>
+
+                            <h3>
+                                Consider speaking with a healthcare professional
+                            </h3>
+
+                            <p>
+                                You reported severe symptoms.
+                                A healthcare professional can evaluate
+                                your symptoms and determine the appropriate
+                                next steps.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            /* =================================================
+               MODERATE / LONG DURATION
+            ================================================= */
+
+            else if (
+                severity === "moderate" ||
+                duration === "4-7-days" ||
+                duration === "more-week"
+            ) {
+
+                resultContent.innerHTML = `
+
+                    <div class="guidance-result moderate-result">
+
+                        <i class="fa-solid fa-user-doctor"></i>
+
+                        <div>
+
+                            <h3>
+                                Consider getting medical advice
+                            </h3>
+
+                            <p>
+                                Since your symptoms are moderate or
+                                have lasted several days, consider
+                                discussing them with a qualified
+                                healthcare professional.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            /* =================================================
+               MILD
+            ================================================= */
+
+            else {
+
+                resultContent.innerHTML = `
+
+                    <div class="guidance-result mild-result">
+
+                        <i class="fa-solid fa-circle-info"></i>
+
+                        <div>
+
+                            <h3>
+                                Monitor your symptoms
+                            </h3>
+
+                            <p>
+                                Your responses indicate mild symptoms.
+                                Rest, hydration, and monitoring how you
+                                feel may be appropriate for some minor
+                                symptoms.
+                            </p>
+
+                            <p>
+                                If your symptoms worsen, persist, or
+                                concern you, seek medical advice.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            /* =================================================
+               SHOW RESULT
+            ================================================= */
+
+            resultCard.style.display = "block";
+
+
+            resultCard.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+        /* =====================================================
+   SEND SYMPTOMS TO AI ASSISTANT
+===================================================== */
+
+        function prepareAIQuestion() {
+
+            const symptoms =
+                document.getElementById("symptoms").value.trim();
+
+            const duration =
+                document.getElementById("duration").value;
+
+            const severity =
+                document.getElementById("severity").value;
+
+            const otherSymptoms =
+                document.getElementById("otherSymptoms").value.trim();
+
+
+            let message =
+                "I just used the Symptom Checker. " +
+                "Here are my symptoms:\n\n" +
+
+                "Symptoms: " + symptoms + "\n" +
+
+                "Duration: " + duration + "\n" +
+
+                "Severity: " + severity;
+
+
+            if (otherSymptoms) {
+
+                message +=
+                    "\nOther symptoms: " +
+                    otherSymptoms;
+
+            }
+
+
+            localStorage.setItem(
+                "healthGuideAIQuestion",
+                message
+            );
+
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        function resetChecker() {
+
+            document
+                .getElementById("symptomForm")
+                .reset();
+
+
+            document
+                .getElementById("resultCard")
+                .style.display = "none";
+
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        function toggleSidebar() {
+
+            document
+                .getElementById("sidebar")
+                .classList
+                .toggle("show");
+
+        }
+
+
+        /* =====================================================
+   USER NAME
+===================================================== */
+
+        const savedName =
+            localStorage.getItem("healthGuideUserName");
+
+        const savedUser =
+            localStorage.getItem("healthGuideUser");
+
+
+        if (savedName) {
+
+            document
+                .getElementById("headerName")
+                .textContent = savedName;
+
+        } else if (savedUser) {
+
+            const username =
+                savedUser.split("@")[0];
+
+            const formattedName =
+                username.charAt(0).toUpperCase() +
+                username.slice(1);
+
+            document
+                .getElementById("headerName")
+                .textContent = formattedName;
+        }
+
+
+        /* =====================================================
+           LOGOUT
+        ===================================================== */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener(
+                "click",
+                function () {
+
+                    localStorage.removeItem(
+                        "healthGuideUser"
+                    );
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Health Timeline | HealthGuide AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+
+<body class="dashboard-page">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <span>
+                HealthGuide <strong>AI</strong>
+            </span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN</p>
+
+            <a href="dashboard.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="medical-history.html" class="nav-item">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span>Medical History</span>
+            </a>
+
+            <a href="medications.html" class="nav-item">
+                <i class="fa-solid fa-pills"></i>
+                <span>Medications</span>
+            </a>
+
+            <a href="allergies.html" class="nav-item">
+                <i class="fa-solid fa-hand-dots"></i>
+                <span>Allergies</span>
+            </a>
+
+            <a href="medical-documents.html" class="nav-item">
+                <i class="fa-solid fa-file-medical"></i>
+                <span>Medical Documents</span>
+            </a>
+
+            <a href="health-timeline.html" class="nav-item active">
+                <i class="fa-solid fa-timeline"></i>
+                <span>Health Timeline</span>
+            </a>
+
+
+            <p class="nav-title second-title">
+                HEALTH TOOLS
+            </p>
+
+            <a href="ai-assistant.html" class="nav-item">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI Health Assistant</span>
+            </a>
+
+            <a href="symptom-checker.html" class="nav-item">
+                <i class="fa-solid fa-stethoscope"></i>
+                <span>Check My Symptoms</span>
+            </a>
+
+            <a href="health-library.html" class="nav-item">
+                <i class="fa-solid fa-book-medical"></i>
+                <span>Health Library</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="profile-settings.html" class="nav-item">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Profile & Settings</span>
+            </a>
+
+            <a href="index.html" class="nav-item logout-item" id="logoutBtn">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="dashboard-main">
+
+
+        <!-- HEADER -->
+
+        <header class="dashboard-header">
+
+            <button class="mobile-menu" onclick="toggleSidebar()">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <div class="header-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text" placeholder="Search your health information...">
+
+            </div>
+
+
+            <div class="header-right">
+
+                <button class="notification-btn">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span></span>
+
+                </button>
+
+
+                <div class="header-profile">
+
+                    <div class="header-avatar">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong id="headerName">
+                            Patient
+                        </strong>
+
+                        <small>
+                            Patient Account
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <main class="dashboard-content">
+
+
+            <!-- PAGE HEADING -->
+
+            <section class="page-heading">
+
+                <div>
+
+                    <p class="welcome-label">
+                        HEALTH RECORDS
+                    </p>
+
+                    <h1>
+                        Health Timeline
+                    </h1>
+
+                    <p>
+                        View your health information in chronological order.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- INFO -->
+
+            <section class="dashboard-safety">
+
+                <div class="safety-small-icon">
+
+                    <i class="fa-solid fa-timeline"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Your health journey in one place
+                    </strong>
+
+                    <p>
+                        This timeline combines information you've
+                        added to your HealthGuide AI records.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- SUMMARY -->
+
+            <section class="history-summary-grid">
+
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon blue-bg">
+
+                        <i class="fa-solid fa-notes-medical"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Conditions
+                        </span>
+
+                        <strong id="timelineConditions">
+                            00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon teal-bg">
+
+                        <i class="fa-solid fa-pills"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Medications
+                        </span>
+
+                        <strong id="timelineMedications">
+                            00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon orange-bg">
+
+                        <i class="fa-solid fa-hand-dots"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Allergies
+                        </span>
+
+                        <strong id="timelineAllergies">
+                            00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card history-summary-card">
+
+                    <div class="stat-icon purple-bg">
+
+                        <i class="fa-solid fa-file-medical"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Documents
+                        </span>
+
+                        <strong id="timelineDocuments">
+                            00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TIMELINE -->
+
+            <section class="dashboard-card timeline-card">
+
+                <div class="section-card-header">
+
+                    <div>
+
+                        <h2>
+                            Your Health Journey
+                        </h2>
+
+                        <p>
+                            Events from your saved health records.
+                        </p>
+
+                    </div>
+
+
+                    <button class="timeline-refresh" onclick="buildTimeline()">
+
+                        <i class="fa-solid fa-rotate"></i>
+
+                        Refresh
+
+                    </button>
+
+                </div>
+
+
+                <div id="timelineContainer" class="timeline-container">
+
+                    <!-- Timeline inserted by JavaScript -->
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= SCRIPT ================= -->
+
+    <script>
+
+        /* =====================================================
+           BUILD TIMELINE
+        ===================================================== */
+
+        function buildTimeline() {
+
+            const conditions =
+                JSON.parse(
+                    localStorage.getItem(
+                        "healthGuideConditions"
+                    )
+                ) || [];
+
+
+            const medications =
+                JSON.parse(
+                    localStorage.getItem(
+                        "healthGuideMedications"
+                    )
+                ) || [];
+
+
+            const allergies =
+                JSON.parse(
+                    localStorage.getItem(
+                        "healthGuideAllergies"
+                    )
+                ) || [];
+
+
+            const documents =
+                JSON.parse(
+                    localStorage.getItem(
+                        "healthGuideDocuments"
+                    )
+                ) || [];
+
+
+            /* ================= SUMMARY ================= */
+
+            document
+                .getElementById("timelineConditions")
+                .textContent =
+                String(conditions.length)
+                    .padStart(2, "0");
+
+
+            document
+                .getElementById("timelineMedications")
+                .textContent =
+                String(medications.length)
+                    .padStart(2, "0");
+
+
+            document
+                .getElementById("timelineAllergies")
+                .textContent =
+                String(allergies.length)
+                    .padStart(2, "0");
+
+
+            document
+                .getElementById("timelineDocuments")
+                .textContent =
+                String(documents.length)
+                    .padStart(2, "0");
+
+
+            /* ================= EVENTS ================= */
+
+            let events = [];
+
+
+            /* CONDITIONS */
+
+            conditions.forEach(condition => {
+
+                events.push({
+
+                    type: "condition",
+
+                    icon: "fa-notes-medical",
+
+                    title:
+                        condition.name,
+
+                    description:
+                        condition.notes ||
+                        "Medical condition recorded.",
+
+                    date:
+                        condition.date,
+
+                    label:
+                        condition.status
+
+                });
+
+            });
+
+
+            /* MEDICATIONS */
+
+            medications.forEach(medication => {
+
+                events.push({
+
+                    type: "medication",
+
+                    icon: "fa-pills",
+
+                    title:
+                        medication.name,
+
+                    description:
+                        medication.dosage +
+                        " · " +
+                        medication.frequency,
+
+                    date:
+                        medication.startDate,
+
+                    label:
+                        "Medication"
+
+                });
+
+            });
+
+
+            /* ALLERGIES */
+
+            allergies.forEach(allergy => {
+
+                events.push({
+
+                    type: "allergy",
+
+                    icon: "fa-hand-dots",
+
+                    title:
+                        allergy.name,
+
+                    description:
+                        "Reaction: " +
+                        allergy.reaction,
+
+                    date:
+                        new Date()
+                            .toISOString()
+                            .split("T")[0],
+
+                    label:
+                        allergy.severity
+
+                });
+
+            });
+
+
+            /* DOCUMENTS */
+
+            documents.forEach(documentData => {
+
+                events.push({
+
+                    type: "document",
+
+                    icon: "fa-file-medical",
+
+                    title:
+                        documentData.name,
+
+                    description:
+                        "Medical document uploaded.",
+
+                    date:
+                        documentData.date
+                            .split("T")[0],
+
+                    label:
+                        "Document"
+
+                });
+
+            });
+
+
+            /* ================= SORT ================= */
+
+            events.sort(
+                (a, b) =>
+                    new Date(b.date) -
+                    new Date(a.date)
+            );
+
+
+            const container =
+                document.getElementById(
+                    "timelineContainer"
+                );
+
+
+            container.innerHTML = "";
+
+
+            /* ================= EMPTY ================= */
+
+            if (events.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="empty-history">
+
+                        <div class="empty-history-icon">
+
+                            <i class="fa-solid fa-timeline"></i>
+
+                        </div>
+
+                        <h3>
+                            Your timeline is empty
+                        </h3>
+
+                        <p>
+                            Add medical information to see
+                            your health journey here.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            /* ================= EVENTS ================= */
+
+            events.forEach(event => {
+
+                const item =
+                    document.createElement("div");
+
+
+                item.className =
+                    "timeline-event";
+
+
+                item.innerHTML = `
+
+                    <div class="
+                        timeline-event-marker
+                        ${event.type}
+                    ">
+
+                        <i class="
+                            fa-solid
+                            ${event.icon}
+                        "></i>
+
+                    </div>
+
+
+                    <div class="timeline-event-content">
+
+                        <div class="timeline-event-top">
+
+                            <span class="timeline-event-date">
+
+                                ${formatTimelineDate(event.date)}
+
+                            </span>
+
+
+                            <span class="
+                                timeline-event-label
+                                ${event.type}
+                            ">
+
+                                ${escapeHTML(event.label)}
+
+                            </span>
+
+                        </div>
+
+
+                        <h3>
+                            ${escapeHTML(event.title)}
+                        </h3>
+
+
+                        <p>
+                            ${escapeHTML(event.description)}
+                        </p>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(item);
+
+            });
+
+        }
+
+
+        /* =====================================================
+           DATE
+        ===================================================== */
+
+        function formatTimelineDate(dateString) {
+
+            if (!dateString) {
+                return "Date not specified";
+            }
+
+
+            const date =
+                new Date(
+                    dateString + "T00:00:00"
+                );
+
+
+            return date.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           ESCAPE
+        ===================================================== */
+
+        function escapeHTML(value) {
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        function toggleSidebar() {
+
+            document
+                .getElementById("sidebar")
+                .classList
+                .toggle("show");
+
+        }
+
+
+        /* =====================================================
+   USER NAME
+===================================================== */
+
+        const savedName =
+            localStorage.getItem("healthGuideUserName");
+
+        const savedUser =
+            localStorage.getItem("healthGuideUser");
+
+        if (savedName) {
+
+            document
+                .getElementById("headerName")
+                .textContent = savedName;
+
+        } else if (savedUser) {
+
+            const username =
+                savedUser.split("@")[0];
+
+            const formattedName =
+                username.charAt(0).toUpperCase() +
+                username.slice(1);
+
+            document
+                .getElementById("headerName")
+                .textContent =
+                formattedName;
+        }
+
+
+        /* =====================================================
+           LOGOUT
+        ===================================================== */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener(
+                "click",
+                function () {
+
+                    localStorage.removeItem(
+                        "healthGuideUser"
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           INITIAL LOAD
+        ===================================================== */
+
+        buildTimeline();
+
+    </script>
+
+</body>
+
+</html>

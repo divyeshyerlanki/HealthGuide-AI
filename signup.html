@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | HealthGuide AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="auth-page">
+
+    <!-- Top Bar -->
+    <header class="auth-navbar">
+
+        <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <span>HealthGuide <strong>AI</strong></span>
+        </a>
+
+        <a href="index.html" class="back-home">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Home
+        </a>
+
+    </header>
+
+
+    <!-- Sign Up Area -->
+    <main class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="auth-heading">
+
+                <div class="auth-main-icon">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+
+                <h1>Create your account</h1>
+
+                <p>
+                    Start organizing your health information in one secure place.
+                </p>
+
+            </div>
+
+
+            <!-- Signup Form -->
+            <form id="signupForm">
+
+                <div class="form-group">
+                    <label for="fullName">
+                        Full Name
+                    </label>
+
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user"></i>
+
+                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email"
+                            required>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="dob">
+                            Date of Birth
+                        </label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-calendar"></i>
+
+                            <input type="date" id="dob" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="bloodGroup">
+                            Blood Group
+                        </label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-droplet"></i>
+
+                            <select id="bloodGroup">
+                                <option value="">Select</option>
+                                <option>A+</option>
+                                <option>A-</option>
+                                <option>B+</option>
+                                <option>B-</option>
+                                <option>AB+</option>
+                                <option>AB-</option>
+                                <option>O+</option>
+                                <option>O-</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input type="password" id="password" name="password" placeholder="Create a password"
+                            autocomplete="new-password" required>
+
+                        <button type="button" class="password-toggle" onclick="togglePassword('password', this)">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+
+                    <small class="password-hint">
+                        Use at least 8 characters.
+                    </small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input type="password" id="confirmPassword" name="confirmPassword"
+                            placeholder="Confirm your password" autocomplete="new-password" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword', this)">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- Terms -->
+                <label class="checkbox-container">
+
+                    <input type="checkbox" id="terms" required>
+
+                    <span>
+                        I understand that HealthGuide AI provides general
+                        health information and does not replace a qualified
+                        healthcare professional.
+                    </span>
+
+                </label>
+
+
+                <button type="submit" class="auth-submit">
+                    Create Account
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </form>
+
+
+            <div class="auth-divider">
+                <span>Already have an account?</span>
+            </div>
+
+
+            <a href="login.html" class="auth-secondary-btn">
+                Login to HealthGuide AI
+            </a>
+
+
+            <div class="auth-security">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <span>
+                    Your health information should always be handled securely.
+                </span>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <footer class="auth-footer">
+        © 2026 HealthGuide AI · For educational and informational purposes.
+    </footer>
+
+
+    <script>
+
+        function togglePassword(inputId, button) {
+
+            const input = document.getElementById(inputId);
+            const icon = button.querySelector("i");
+
+            if (input.type === "password") {
+
+                input.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+
+            } else {
+
+                input.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+
+            }
+        }
+
+
+        document
+            .getElementById("signupForm")
+            .addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+                const password =
+                    document.getElementById("password").value;
+
+                const confirmPassword =
+                    document.getElementById("confirmPassword").value;
+
+
+                if (password.length < 8) {
+
+                    alert("Password must contain at least 8 characters.");
+                    return;
+
+                }
+
+
+                if (password !== confirmPassword) {
+
+                    alert("Passwords do not match.");
+                    return;
+
+                }
+
+
+                const fullName =
+                    document.getElementById("fullName").value.trim();
+
+                const email =
+                    document.getElementById("email").value.trim();
+
+                const dob =
+                    document.getElementById("dob").value;
+
+                const bloodGroup =
+                    document.getElementById("bloodGroup").value;
+
+
+                // Save account details
+                localStorage.setItem("healthGuideUser", email);
+
+                localStorage.setItem(
+                    "healthGuideUserName",
+                    fullName
+                );
+
+                localStorage.setItem(
+                    "healthGuideUserDOB",
+                    dob
+                );
+
+                localStorage.setItem(
+                    "healthGuideUserBloodGroup",
+                    bloodGroup
+                );
+
+                localStorage.setItem(
+                    "healthGuideUserPassword",
+                    password
+                );
+
+
+                alert("Account created successfully!");
+
+                window.location.href = "login.html";
+
+            });
+
+    </script>
+
+</body>
+
+</html>

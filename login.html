@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | HealthGuide AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="auth-page">
+
+    <!-- Top Bar -->
+    <header class="auth-navbar">
+
+        <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <span>HealthGuide <strong>AI</strong></span>
+        </a>
+
+        <a href="index.html" class="back-home">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Home
+        </a>
+
+    </header>
+
+
+    <!-- Login -->
+    <main class="auth-container">
+
+        <div class="auth-card login-card">
+
+            <div class="auth-heading">
+
+                <div class="auth-main-icon">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                </div>
+
+                <h1>Welcome back</h1>
+
+                <p>
+                    Login to access your personal health dashboard.
+                </p>
+
+            </div>
+
+
+            <form id="loginForm" method="post" autocomplete="on">
+
+                <!-- Email -->
+                <div class="form-group">
+
+                    <label for="loginEmail">
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input type="email" id="loginEmail" name="email" placeholder="Enter your email"
+                            autocomplete="username" inputmode="email" required>
+                    </div>
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="form-group">
+
+                    <div class="password-label">
+
+                        <label for="loginPassword">
+                            Password
+                        </label>
+
+                        <a href="#" id="forgotPassword">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input type="password" id="loginPassword" name="password" placeholder="Enter your password"
+                            autocomplete="current-password" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword('loginPassword', this)">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Remember -->
+                <label class="remember-container">
+
+                    <input type="checkbox" id="rememberMe">
+
+                    <span>Remember me</span>
+
+                </label>
+
+
+                <!-- Login Button -->
+                <button type="submit" class="auth-submit">
+
+                    Login
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+
+            <div class="auth-divider">
+                <span>New to HealthGuide AI?</span>
+            </div>
+
+
+            <a href="signup.html" class="auth-secondary-btn">
+                Create a New Account
+            </a>
+
+
+            <!-- Security -->
+            <div class="auth-security">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <span>
+                    Your personal health information is private and protected.
+                </span>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <footer class="auth-footer">
+        © 2026 HealthGuide AI · For educational and informational purposes.
+    </footer>
+
+
+    <script>
+
+        /* ================= PASSWORD TOGGLE ================= */
+
+        function togglePassword(inputId, button) {
+
+            const input = document.getElementById(inputId);
+            const icon = button.querySelector("i");
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+
+            } else {
+
+                input.type = "password";
+
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+
+            }
+
+        }
+
+
+        /* ================= LOGIN ================= */
+
+        document
+            .getElementById("loginForm")
+            .addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+                const email =
+                    document.getElementById("loginEmail").value.trim();
+
+                const password =
+                    document.getElementById("loginPassword").value;
+
+
+                if (!email || !password) {
+
+                    alert("Please enter your email and password.");
+
+                    return;
+                }
+
+
+                /*
+                    Temporary frontend login.
+
+                    Later this will be replaced with
+                    real backend authentication.
+                */
+
+                localStorage.setItem("healthGuideUser", email);
+
+                window.location.href = "dashboard.html";
+
+            });
+
+
+        /* ================= FORGOT PASSWORD ================= */
+
+        document
+            .getElementById("forgotPassword")
+            .addEventListener("click", function (event) {
+
+                event.preventDefault();
+
+                const email = prompt(
+                    "Enter your email address to reset your password:"
+                );
+
+                if (email) {
+
+                    alert(
+                        "If an account exists for this email, " +
+                        "password reset instructions will be sent."
+                    );
+
+                }
+
+            });
+
+    </script>
+
+</body>
+
+</html>
