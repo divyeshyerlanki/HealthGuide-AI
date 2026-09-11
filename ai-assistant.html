@@ -374,7 +374,6 @@
 
     <script>
 
-
         function getHealthData() {
 
             const conditions =
@@ -421,35 +420,45 @@
         /* =====================================================
            SEND MESSAGE
         ===================================================== */
+        let isSending = false;
 
         async function sendMessage() {
+
+            if (isSending) {
+                return;
+            }
 
             const input =
                 document.getElementById("userMessage");
 
+            const sendButton =
+                document.querySelector(".ai-send-btn");
+
             const message =
                 input.value.trim();
-
 
             if (!message) {
                 return;
             }
 
+            isSending = true;
+
+            input.disabled = true;
+            sendButton.disabled = true;
+            sendButton.style.opacity = "0.5";
+            sendButton.style.cursor = "not-allowed";
 
             // Show user's message immediately
             addUserMessage(message);
 
             input.value = "";
 
-
             // Show temporary AI message
             addAIMessage("Thinking... 🤔");
-
 
             try {
 
                 const healthData = getHealthData();
-
 
                 const response =
                     await fetch(
@@ -547,9 +556,20 @@
 
                 }
 
-            }
+            } finally {
 
+                isSending = false;
+
+                input.disabled = false;
+                sendButton.disabled = false;
+                sendButton.style.opacity = "";
+                sendButton.style.cursor = "";
+                input.focus();
+
+            }
         }
+
+
 
         function getHealthData() {
 
@@ -711,6 +731,7 @@
 
             scrollChat();
 
+            saveChat();
         }
 
 
@@ -754,8 +775,13 @@
 
             container.appendChild(messageDiv);
 
-
             scrollChat();
+
+            if (message !== "Thinking... 🤔") {
+                saveChat();
+            }
+
+
 
         }
 
@@ -1198,6 +1224,31 @@
             }
 
         }
+        function saveChat() {
+
+            const container =
+                document.getElementById("chatMessages");
+
+            localStorage.setItem(
+                "healthGuideChat",
+                container.innerHTML
+            );
+        }
+
+
+        function loadChat() {
+
+            const savedChat =
+                localStorage.getItem("healthGuideChat");
+
+            if (savedChat) {
+
+                document.getElementById("chatMessages").innerHTML =
+                    savedChat;
+
+                scrollChat();
+            }
+        }
 
 
         /* =====================================================
@@ -1236,6 +1287,8 @@
                 </div>
 
             `;
+
+            localStorage.removeItem("healthGuideChat");
 
         }
 
@@ -1337,6 +1390,8 @@
         /* =====================================================
    RECEIVE SYMPTOMS FROM SYMPTOM CHECKER
 ===================================================== */
+
+        loadChat();
 
         const savedAIQuestion =
             localStorage.getItem(
