@@ -513,8 +513,7 @@
 
                 // Show real Gemini response
                 addAIMessage(
-                    escapeHTML(data.reply)
-                        .replace(/\n/g, "<br>")
+                    formatAIResponse(data.reply)
                 );
 
 
@@ -680,12 +679,55 @@
                 return "I couldn't generate a response.";
             }
 
+            let formatted = escapeHTML(message);
 
-            return escapeHTML(message)
-                .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-                .replace(/\n\n/g, "<br><br>")
-                .replace(/\n/g, "<br>");
+            // Headings
+            formatted = formatted.replace(
+                /^### (.*)$/gm,
+                "<strong class=\"ai-heading\">$1</strong>"
+            );
 
+            formatted = formatted.replace(
+                /^## (.*)$/gm,
+                "<strong class=\"ai-heading\">$1</strong>"
+            );
+
+            formatted = formatted.replace(
+                /^# (.*)$/gm,
+                "<strong class=\"ai-heading\">$1</strong>"
+            );
+
+            // Bold text
+            formatted = formatted.replace(
+                /\*\*(.*?)\*\*/g,
+                "<strong>$1</strong>"
+            );
+
+            // Bullet points
+            formatted = formatted.replace(
+                /^\s*[-*]\s+(.*)$/gm,
+                "• $1"
+            );
+
+            // Numbered lists
+            formatted = formatted.replace(
+                /^\s*(\d+)\.\s+(.*)$/gm,
+                "$1. $2"
+            );
+
+            // Paragraph spacing
+            formatted = formatted.replace(
+                /\n\n/g,
+                "<br><br>"
+            );
+
+            // Single line breaks
+            formatted = formatted.replace(
+                /\n/g,
+                "<br>"
+            );
+
+            return formatted;
         }
 
 
