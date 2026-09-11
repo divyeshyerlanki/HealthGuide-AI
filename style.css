@@ -5353,3 +5353,15 @@ body.dark-theme .library-search-card {
     background: #17232d;
     border-color: #2a3a46;
 }
+
+/* =====================================================
+   DARK THEME - ALLERGY WARNING TEXT
+   ===================================================== */
+
+.dark-theme .allergy-warning strong {
+    color: #1e293b;
+}
+
+.dark-theme .allergy-warning p {
+    color: #475569;
+}
