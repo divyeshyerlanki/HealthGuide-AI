@@ -273,11 +273,8 @@
                 <div class="settings-header">
 
                     <div class="settings-icon">
-
                         <i class="fa-solid fa-bell"></i>
-
                     </div>
-
 
                     <div>
 
@@ -308,7 +305,6 @@
 
                     </div>
 
-
                     <label class="toggle-switch">
 
                         <input type="checkbox" id="healthReminders">
@@ -334,7 +330,6 @@
 
                     </div>
 
-
                     <label class="toggle-switch">
 
                         <input type="checkbox" id="healthTips">
@@ -345,8 +340,34 @@
 
                 </div>
 
-            </section>
 
+                <!-- DARK MODE -->
+
+                <div class="settings-option">
+
+                    <div>
+
+                        <strong>
+                            Dark Mode
+                        </strong>
+
+                        <p>
+                            Switch between light and dark theme.
+                        </p>
+
+                    </div>
+
+                    <label class="toggle-switch">
+
+                        <input type="checkbox" id="darkModeToggle">
+
+                        <span class="toggle-slider"></span>
+
+                    </label>
+
+                </div>
+
+            </section>
 
             <!-- ================= PRIVACY ================= -->
 
@@ -683,6 +704,55 @@
                 .getElementById("sidebar")
                 .classList
                 .toggle("show");
+
+        }
+
+        /* ================= DARK MODE ================= */
+
+        const darkModeToggle =
+            document.getElementById("darkModeToggle");
+
+
+        /* Apply saved theme */
+
+        if (localStorage.getItem("healthGuideTheme") === "dark") {
+
+            document.body.classList.add("dark-theme");
+
+            if (darkModeToggle) {
+                darkModeToggle.checked = true;
+            }
+
+        }
+
+
+        /* Dark mode toggle */
+
+        if (darkModeToggle) {
+
+            darkModeToggle.addEventListener("change", function () {
+
+                if (this.checked) {
+
+                    document.body.classList.add("dark-theme");
+
+                    localStorage.setItem(
+                        "healthGuideTheme",
+                        "dark"
+                    );
+
+                } else {
+
+                    document.body.classList.remove("dark-theme");
+
+                    localStorage.setItem(
+                        "healthGuideTheme",
+                        "light"
+                    );
+
+                }
+
+            });
 
         }
 

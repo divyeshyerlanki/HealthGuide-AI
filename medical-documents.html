@@ -424,6 +424,12 @@
 
     <script>
 
+        /* ================= APPLY SAVED DARK THEME ================= */
+
+        if (localStorage.getItem("healthGuideTheme") === "dark") {
+            document.body.classList.add("dark-theme");
+        }
+
         /* =====================================================
            DATA
         ===================================================== */
@@ -1106,6 +1112,7 @@
 
     </script>
 
+    <script src="script.js"></script>
 </body>
 
 </html>

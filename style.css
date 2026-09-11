@@ -5049,3 +5049,307 @@ footer {
     }
 
 }
+
+
+/* =====================================================
+   DARK THEME - STEP 1
+===================================================== */
+
+body.dark-theme {
+    background: #0f1720;
+    color: #e8f1f5;
+}
+
+/* DARK THEME - CARDS */
+
+body.dark-theme .dashboard-card,
+body.dark-theme .profile-card,
+body.dark-theme .settings-card,
+body.dark-theme .danger-settings-card,
+body.dark-theme .auth-card {
+    background: #17232d;
+    border-color: #2a3a46;
+}
+
+/* DARK THEME - SIDEBAR */
+
+body.dark-theme .sidebar {
+    background: #17232d;
+    border-color: #2a3a46;
+}
+
+body.dark-theme .sidebar a {
+    color: #cbd8df;
+}
+
+body.dark-theme .sidebar a:hover {
+    background: #22333f;
+    color: #ffffff;
+}
+
+body.dark-theme .sidebar .active,
+body.dark-theme .sidebar .active a {
+    background: #123f43;
+    color: #20c4c7;
+}
+
+/* DARK THEME - TOP BAR */
+
+body.dark-theme .dashboard-header {
+    background: #17232d;
+    border-color: #2a3a46;
+}
+
+body.dark-theme .search-box {
+    background: #1f303b;
+    border-color: #2a3a46;
+}
+
+body.dark-theme .search-box input {
+    background: transparent;
+    color: #e8f1f5;
+}
+
+body.dark-theme .search-box input::placeholder {
+    color: #8da1ad;
+}
+
+body.dark-theme .dashboard-header a,
+body.dark-theme .dashboard-header button {
+    color: #cbd8df;
+}
+
+/* DARK THEME - AI CHAT AREA */
+
+body.dark-theme .chat-container,
+body.dark-theme .chat-messages,
+body.dark-theme #chatMessages {
+    background: #111c25;
+}
+
+body.dark-theme .ai-message,
+body.dark-theme .user-message {
+    background: #17232d;
+    color: #e8f1f5;
+}
+
+body.dark-theme .message-content {
+    color: #d7e3e8;
+}
+
+body.dark-theme .chat-input-area {
+    background: #17232d;
+    border-color: #2a3a46;
+}
+
+body.dark-theme #userMessage {
+    background: #1f303b;
+    color: #e8f1f5;
+    border-color: #2a3a46;
+}
+
+body.dark-theme #userMessage::placeholder {
+    color: #8da1ad;
+}
+
+/* DARK THEME - CHAT TEXT FIELD */
+
+body.dark-theme #userMessage {
+    background: #17232d;
+    color: #f1f5f7;
+    border: 1px solid #2a3a46;
+}
+
+body.dark-theme #userMessage::placeholder {
+    color: #8da1ad;
+}
+
+body.dark-theme #userMessage:focus {
+    background: #1b2b36;
+    border-color: #20c4c7;
+    outline: none;
+}
+
+/* DARK THEME - AI MESSAGE BUBBLES */
+
+body.dark-theme .message-content {
+    background: #17232d;
+    color: #e8f1f5;
+    border-color: #2a3a46;
+}
+
+body.dark-theme .message-content p {
+    color: #d7e3e8;
+}
+
+/* DARK THEME - QUICK QUESTION BUTTONS */
+
+body.dark-theme .quick-question-btn {
+    background: #17232d;
+    color: #d7e3e8;
+    border-color: #2a3a46;
+}
+
+body.dark-theme .quick-question-btn:hover {
+    background: #22333f;
+    color: #20c4c7;
+}
+
+/* DARK THEME - HEALTH INFORMATION BANNER */
+
+body.dark-theme .health-info-banner {
+    background: #17232d;
+    border-color: #2a3a46;
+    color: #d7e3e8;
+}
+
+body.dark-theme .health-info-banner h3,
+body.dark-theme .health-info-banner p {
+    color: #d7e3e8;
+}
+
+/* DARK THEME - AI DISCLAIMER */
+
+body.dark-theme .dashboard-safety {
+    background: #17232d;
+    border-color: #2a3a46;
+    color: #d7e3e8;
+}
+
+body.dark-theme .dashboard-safety strong,
+body.dark-theme .dashboard-safety p {
+    color: #d7e3e8;
+}
+
+/* DARK THEME - CHAT MESSAGE AREA */
+
+body.dark-theme .ai-chat-messages {
+    background: #111c25;
+    color: #d7e3e8;
+}
+
+/* DARK THEME - AI MESSAGE */
+
+body.dark-theme .ai-message {
+    background: #17232d;
+    color: #d7e3e8;
+}
+
+body.dark-theme .message-content {
+    background: #1b2a35;
+    color: #d7e3e8;
+    border-color: #2a3a46;
+}
+
+body.dark-theme .message-content p {
+    color: #d7e3e8;
+}
+
+body.dark-theme .message-avatar {
+    background: #e8f8f8;
+    color: #12a6aa;
+}
+
+/* DARK THEME - USER MESSAGE */
+
+body.dark-theme .user-message {
+    color: #e6f2f5;
+}
+
+body.dark-theme .user-message .message-content {
+    background: #0ea5a8;
+    color: #ffffff;
+    border-color: #0ea5a8;
+}
+
+body.dark-theme .user-message .message-content p {
+    color: #ffffff;
+}
+
+body.dark-theme .user-message .user-avatar {
+    background: #e8f8f8;
+    color: #12a6aa;
+}
+
+/* DARK THEME - ALLERGIES PAGE */
+
+body.dark-theme .allergies-page {
+    background: #0f1821;
+    color: #e6f2f5;
+}
+
+/* MEDICAL HISTORY DARK MODE */
+
+body.dark-theme .main-content {
+    background: #0f1720;
+}
+
+body.dark-theme .content-card {
+    background: #17232d;
+    border-color: #2a3a46;
+    color: #e8f1f5;
+}
+
+body.dark-theme .main-content {
+    background: #0f1720;
+}
+
+body.dark-theme .content-card {
+    background: #17232d;
+    border-color: #2a3a46;
+    color: #e8f1f5;
+}
+
+/* Medical Documents - Upload Area */
+body.dark-theme #uploadArea {
+    background: #17232d;
+    border-color: #2a3a46;
+    color: #e8f1f5;
+}
+
+/* =====================================================
+   HEALTH TIMELINE - DARK MODE
+===================================================== */
+
+body.dark-theme .timeline-card {
+    background: #17232d;
+    border-color: #2a3a46;
+    color: #e8f1f5;
+}
+
+body.dark-theme .timeline-card h2,
+body.dark-theme .timeline-card p {
+    color: #e8f1f5;
+}
+
+body.dark-theme .timeline-container {
+    background: #17232d;
+    color: #e8f1f5;
+}
+
+/* =====================================================
+   HEALTH LIBRARY - DARK THEME
+===================================================== */
+
+body.dark-theme .library-topic-card {
+    background: #17232d;
+    border-color: #2a3a46;
+    color: #e8f1f5;
+}
+
+body.dark-theme .library-topic-card h3 {
+    color: #e8f1f5;
+}
+
+body.dark-theme .library-topic-card p {
+    color: #9fb3c1;
+}
+
+body.dark-theme .library-category {
+    color: #16b8b8;
+}
+
+body.dark-theme .library-search-card {
+    background: #17232d;
+    border-color: #2a3a46;
+}
