@@ -231,7 +231,7 @@
 
                     </div>
 
-                    <strong class="stat-number">06</strong>
+                    <strong class="stat-number" id="historyCount">00</strong>
 
                     <p>
                         Conditions & records
@@ -259,7 +259,7 @@
 
                     </div>
 
-                    <strong class="stat-number">03</strong>
+                    <strong class="stat-number" id="medicationCount">00</strong>
 
                     <p>
                         Current medications
@@ -287,7 +287,7 @@
 
                     </div>
 
-                    <strong class="stat-number">02</strong>
+                    <strong class="stat-number" id="allergyCount">00</strong>
 
                     <p>
                         Recorded allergies
@@ -315,7 +315,7 @@
 
                     </div>
 
-                    <strong class="stat-number">08</strong>
+                    <strong class="stat-number" id="documentCount">00</strong>
 
                     <p>
                         Medical documents
@@ -659,6 +659,35 @@
                 localStorage.removeItem("healthGuideUser");
 
             });
+
+        function updateDashboardStats() {
+
+            const conditions =
+                JSON.parse(localStorage.getItem("healthGuideConditions")) || [];
+
+            const medications =
+                JSON.parse(localStorage.getItem("healthGuideMedications")) || [];
+
+            const allergies =
+                JSON.parse(localStorage.getItem("healthGuideAllergies")) || [];
+
+            const documents =
+                JSON.parse(localStorage.getItem("healthGuideDocuments")) || [];
+
+            document.getElementById("historyCount").textContent =
+                String(conditions.length).padStart(2, "0");
+
+            document.getElementById("medicationCount").textContent =
+                String(medications.length).padStart(2, "0");
+
+            document.getElementById("allergyCount").textContent =
+                String(allergies.length).padStart(2, "0");
+
+            document.getElementById("documentCount").textContent =
+                String(documents.length).padStart(2, "0");
+        }
+
+        updateDashboardStats();
 
     </script>
     <script>
