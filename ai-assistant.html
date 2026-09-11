@@ -374,6 +374,50 @@
 
     <script>
 
+
+        function getHealthData() {
+
+            const conditions =
+                JSON.parse(
+                    localStorage.getItem(
+                        "healthGuideConditions"
+                    )
+                ) || [];
+
+
+            const medications =
+                JSON.parse(
+                    localStorage.getItem(
+                        "healthGuideMedications"
+                    )
+                ) || [];
+
+
+            const allergies =
+                JSON.parse(
+                    localStorage.getItem(
+                        "healthGuideAllergies"
+                    )
+                ) || [];
+
+
+            const documents =
+                JSON.parse(
+                    localStorage.getItem(
+                        "healthGuideDocuments"
+                    )
+                ) || [];
+
+
+            return {
+                conditions: conditions,
+                medications: medications,
+                allergies: allergies,
+                documents: documents
+            };
+
+        }
+
         /* =====================================================
            SEND MESSAGE
         ===================================================== */
@@ -386,40 +430,47 @@
             const message =
                 input.value.trim();
 
+
             if (!message) {
                 return;
             }
+
 
             // Show user's message immediately
             addUserMessage(message);
 
             input.value = "";
 
+
             // Show temporary AI message
             addAIMessage("Thinking... 🤔");
+
 
             try {
 
                 const healthData = getHealthData();
 
+
                 const response =
-                    await fetch("http://localhost:3000/api/chat", {
+                    await fetch(
+                        "https://healthguide-ai.onrender.com/api/chat",
+                        {
+                            method: "POST",
 
-                        method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
 
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-
-                        body: JSON.stringify({
-
-                            message: message,
-
-                            healthData: healthData
-
-                        })
-
-                    });
+                            body: JSON.stringify({
+                                message: message,
+                                healthData: healthData,
+                                userEmail:
+                                    localStorage.getItem(
+                                        "healthGuideUser"
+                                    )
+                            })
+                        }
+                    );
 
 
                 const data =
@@ -437,30 +488,64 @@
 
 
                 // Remove "Thinking..."
-                removeThinkingMessage();
+                const container =
+                    document.getElementById("chatMessages");
+
+                const messages =
+                    container.querySelectorAll(".ai-message");
+
+                const thinkingMessage =
+                    messages[messages.length - 1];
+
+                if (thinkingMessage) {
+                    thinkingMessage.remove();
+                }
 
 
                 // Show real Gemini response
                 addAIMessage(
-                    formatAIResponse(data.reply)
+                    escapeHTML(data.reply)
+                        .replace(/\n/g, "<br>")
                 );
 
 
             } catch (error) {
 
                 console.error(
-                    "AI Assistant Error:",
+                    "AI Chat Error:",
                     error
                 );
 
 
-                removeThinkingMessage();
+                const container =
+                    document.getElementById("chatMessages");
+
+                const messages =
+                    container.querySelectorAll(".ai-message");
+
+                const thinkingMessage =
+                    messages[messages.length - 1];
+
+                if (thinkingMessage) {
+                    thinkingMessage.remove();
+                }
 
 
-                addAIMessage(
-                    "Sorry, I couldn't connect to the AI right now. " +
-                    "Please make sure the HealthGuide AI backend is running."
-                );
+                // Show daily limit message
+                if (error.message &&
+                    error.message.includes("Daily AI limit")) {
+
+                    addAIMessage(
+                        "⚠️ Daily AI limit reached. Please try again after 24 hours."
+                    );
+
+                } else {
+
+                    addAIMessage(
+                        "Sorry, I couldn't connect to the AI right now. Please try again."
+                    );
+
+                }
 
             }
 

@@ -239,8 +239,7 @@
 
         document
             .getElementById("signupForm")
-            .addEventListener("submit", function (event) {
-
+            .addEventListener("submit", async function (event) {
                 event.preventDefault();
 
                 const password =
@@ -279,34 +278,68 @@
                     document.getElementById("bloodGroup").value;
 
 
-                // Save account details
-                localStorage.setItem("healthGuideUser", email);
+                try {
 
-                localStorage.setItem(
-                    "healthGuideUserName",
-                    fullName
-                );
+                    const response = await fetch(
+                        "https://healthguide-ai.onrender.com/api/signup",
+                        {
+                            method: "POST",
 
-                localStorage.setItem(
-                    "healthGuideUserDOB",
-                    dob
-                );
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
 
-                localStorage.setItem(
-                    "healthGuideUserBloodGroup",
-                    bloodGroup
-                );
-
-                localStorage.setItem(
-                    "healthGuideUserPassword",
-                    password
-                );
+                            body: JSON.stringify({
+                                fullName: fullName,
+                                email: email,
+                                dob: dob,
+                                bloodGroup: bloodGroup,
+                                password: password
+                            })
+                        }
+                    );
 
 
-                alert("Account created successfully!");
+                    const data = await response.json();
 
-                window.location.href = "login.html";
 
+                    if (!response.ok) {
+
+                        alert(
+                            data.error ||
+                            "Unable to create account."
+                        );
+
+                        return;
+                    }
+
+
+                    // Keep the name locally for the dashboard UI
+                    localStorage.setItem(
+                        "healthGuideUserName",
+                        fullName
+                    );
+
+
+                    alert("Account created successfully!");
+
+
+                    window.location.href = "login.html";
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Signup Error:",
+                        error
+                    );
+
+
+                    alert(
+                        "Unable to connect to the HealthGuide AI server."
+                    );
+
+                }
             });
 
     </script>
